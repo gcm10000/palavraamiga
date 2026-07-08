@@ -81,7 +81,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Receba reflexões diárias com citações, versículos, favoritos, histórico e funcionamento offline-first. Use pelo navegador ou instale como PWA.",
+          "Receba reflexões diárias com citações, versículos, favoritos e histórico. As mensagens ficam disponíveis mesmo sem internet. Use pelo navegador ou adicione à tela inicial do celular.",
       },
       { name: "author", content: "Palavra Amiga" },
       { property: "og:title", content: "Palavra Amiga" },

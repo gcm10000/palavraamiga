@@ -9,7 +9,7 @@ export const Route = createFileRoute("/privacidade")({
       {
         name: "description",
         content:
-          "Como o Palavra Amiga trata seus dados: uso essencial para conta, preferências e histórico, com foco em uma experiência simples e offline-first.",
+          "Como o Palavra Amiga trata seus dados: uso essencial para conta, preferências e histórico, com foco em uma experiência simples que funciona com e sem internet.",
       },
       { property: "og:title", content: "Política de Privacidade - Palavra Amiga" },
       { property: "og:url", content: "/privacidade" },
@@ -46,11 +46,10 @@ function Privacidade() {
           </section>
 
           <section>
-            <h2 className="font-serif text-2xl text-primary-strong">Funcionamento offline-first</h2>
+            <h2 className="font-serif text-2xl text-primary-strong">Funcionamento com e sem internet</h2>
             <p className="mt-3 text-muted-foreground">
-              O app foi pensado para funcionar de forma offline-first. Conteúdos já
-              sincronizados podem permanecer disponíveis no seu dispositivo mesmo sem
-              conexão.
+              As reflexões que você já abriu ficam guardadas no seu dispositivo,
+              então você pode continuar lendo mesmo quando estiver sem conexão.
             </p>
           </section>
 
