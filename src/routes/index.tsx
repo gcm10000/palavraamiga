@@ -34,8 +34,8 @@ const passos = [
   },
   {
     icon: CloudOff,
-    title: "Continue mesmo offline",
-    text: "O app foi pensado para manter sua rotina mesmo quando a conexão falha.",
+    title: "Funciona mesmo sem internet",
+    text: "Depois de abrir uma vez, as reflexões ficam guardadas no app e podem ser lidas mesmo sem conexão.",
   },
 ];
 
@@ -44,10 +44,10 @@ const recursos = [
   { icon: Quote, title: "Citações e versículos", text: "Conteúdos escolhidos para inspirar serenidade e coragem." },
   { icon: Star, title: "Favoritos", text: "Salve as reflexões que mais importam para você." },
   { icon: Clock, title: "Histórico", text: "Reveja mensagens anteriores quando quiser." },
-  { icon: Bell, title: "Notificações", text: "Receba um lembrete gentil no horário que preferir." },
-  { icon: CloudOff, title: "Offline-first", text: "O conteúdo já sincronizado continua disponível sem conexão." },
-  { icon: Smartphone, title: "PWA instalável", text: "Instale na tela inicial do celular, se desejar. É opcional." },
-  { icon: Download, title: "APK Android em breve", text: "Uma versão para Android está prevista para o futuro." },
+  { icon: Bell, title: "Lembrete diário", text: "Receba uma notificação gentil no horário que preferir." },
+  { icon: CloudOff, title: "Leitura sem internet", text: "As mensagens já abertas ficam disponíveis mesmo quando a conexão cai." },
+  { icon: Smartphone, title: "Use pelo navegador ou como app", text: "Você pode abrir no navegador ou adicionar o ícone à tela inicial do celular, se quiser." },
+  { icon: Download, title: "App para Android em breve", text: "Uma versão própria para Android está prevista para ser disponibilizada no futuro." },
 ];
 
 const faq = [
@@ -56,8 +56,8 @@ const faq = [
     a: "Não. Você pode usar pelo navegador. A instalação como PWA é opcional.",
   },
   {
-    q: "Funciona offline?",
-    a: "O Palavra Amiga foi pensado para funcionar de forma offline-first, mantendo conteúdos já sincronizados disponíveis mesmo sem conexão.",
+    q: "Funciona sem internet?",
+    a: "Sim. Depois que você abre o app uma vez, as reflexões já ficam guardadas no seu dispositivo. Assim, você pode continuar lendo mesmo sem internet.",
   },
   {
     q: "Existe versão Android?",
@@ -69,7 +69,7 @@ const faq = [
   },
   {
     q: "O app é gratuito?",
-    a: "Neste momento, a V1 está sendo preparada para uso inicial e testes.",
+    a: "Neste momento, a primeira versão está sendo preparada para uso inicial e testes.",
   },
 ];
 
@@ -155,9 +155,10 @@ function Index() {
               Use no navegador ou instale se quiser
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-              O Palavra Amiga funciona como PWA: você pode abrir pelo navegador em
-              app.palavraamiga.com.br e, se desejar, instalar na tela inicial do
-              celular. A instalação é opcional.
+              O Palavra Amiga funciona direto no navegador: basta acessar
+              app.palavraamiga.com.br. Se você quiser, pode também adicionar o
+              ícone à tela inicial do celular, como se fosse um app. A
+              instalação é opcional.
             </p>
             <div className="mt-7">
               <a
@@ -190,17 +191,17 @@ function Index() {
               </a>
             </div>
             <div className="rounded-xl border border-border bg-card p-6">
-              <h3 className="font-serif text-xl text-foreground">Como PWA</h3>
+              <h3 className="font-serif text-xl text-foreground">Como app no celular</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 No celular, use a opção “Adicionar à tela inicial” quando
-                disponível.
+                disponível. O app vira um ícone como qualquer outro.
               </p>
             </div>
             <div className="rounded-xl border border-border bg-card p-6">
-              <h3 className="font-serif text-xl text-foreground">APK Android</h3>
+              <h3 className="font-serif text-xl text-foreground">App Android</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Em breve, o APK assinado será disponibilizado em uma página
-                oficial de download.
+                Em breve, uma versão própria para Android será disponibilizada em
+                uma página oficial de download.
               </p>
               <button
                 disabled
@@ -227,7 +228,7 @@ function Index() {
                 Dados essenciais são usados apenas para funcionamento da conta,
                 preferências e histórico.
               </li>
-              <li>O app foi pensado para funcionar de forma offline-first.</li>
+              <li>Depois que uma reflexão é aberta, ela fica disponível mesmo sem internet.</li>
             </ul>
             <div className="mt-7 flex flex-wrap gap-3">
               <a

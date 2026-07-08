@@ -46,11 +46,10 @@ function Privacidade() {
           </section>
 
           <section>
-            <h2 className="font-serif text-2xl text-primary-strong">Funcionamento offline-first</h2>
+            <h2 className="font-serif text-2xl text-primary-strong">Funcionamento com e sem internet</h2>
             <p className="mt-3 text-muted-foreground">
-              O app foi pensado para funcionar de forma offline-first. Conteúdos já
-              sincronizados podem permanecer disponíveis no seu dispositivo mesmo sem
-              conexão.
+              As reflexões que você já abriu ficam guardadas no seu dispositivo,
+              então você pode continuar lendo mesmo quando estiver sem conexão.
             </p>
           </section>
 
