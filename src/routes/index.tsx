@@ -1,24 +1,267 @@
 import { createFileRoute } from "@tanstack/react-router";
+import {
+  Bell,
+  Heart,
+  CloudOff,
+  Sparkles,
+  Quote,
+  Star,
+  Clock,
+  Smartphone,
+  Download,
+  ShieldCheck,
+} from "lucide-react";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
+import { AppPreview } from "@/components/AppPreview";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const APP_URL = "https://app.palavraamiga.com.br";
+
 export const Route = createFileRoute("/")({
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
+const passos = [
+  {
+    icon: Bell,
+    title: "Receba uma reflexão",
+    text: "Todos os dias, uma mensagem curta aparece no app no horário escolhido.",
+  },
+  {
+    icon: Heart,
+    title: "Guarde o que tocou você",
+    text: "Favorite reflexões importantes e encontre tudo depois com facilidade.",
+  },
+  {
+    icon: CloudOff,
+    title: "Continue mesmo offline",
+    text: "O app foi pensado para manter sua rotina mesmo quando a conexão falha.",
+  },
+];
+
+const recursos = [
+  { icon: Sparkles, title: "Reflexão diária", text: "Uma mensagem breve para começar o dia com presença." },
+  { icon: Quote, title: "Citações e versículos", text: "Conteúdos escolhidos para inspirar serenidade e coragem." },
+  { icon: Star, title: "Favoritos", text: "Salve as reflexões que mais importam para você." },
+  { icon: Clock, title: "Histórico", text: "Reveja mensagens anteriores quando quiser." },
+  { icon: Bell, title: "Notificações", text: "Receba um lembrete gentil no horário que preferir." },
+  { icon: CloudOff, title: "Offline-first", text: "O conteúdo já sincronizado continua disponível sem conexão." },
+  { icon: Smartphone, title: "PWA instalável", text: "Instale na tela inicial do celular, se desejar. É opcional." },
+  { icon: Download, title: "APK Android em breve", text: "Uma versão para Android está prevista para o futuro." },
+];
+
+const faq = [
+  {
+    q: "Preciso instalar o app?",
+    a: "Não. Você pode usar pelo navegador. A instalação como PWA é opcional.",
+  },
+  {
+    q: "Funciona offline?",
+    a: "O Palavra Amiga foi pensado para funcionar de forma offline-first, mantendo conteúdos já sincronizados disponíveis mesmo sem conexão.",
+  },
+  {
+    q: "Existe versão Android?",
+    a: "A versão APK está prevista para distribuição manual enquanto a publicação na Google Play fica para uma etapa futura.",
+  },
+  {
+    q: "Onde acesso o app?",
+    a: "Em https://app.palavraamiga.com.br",
+  },
+  {
+    q: "O app é gratuito?",
+    a: "Neste momento, a V1 está sendo preparada para uso inicial e testes.",
+  },
+];
+
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="flex min-h-screen flex-col">
+      <SiteHeader />
+      <main id="inicio">
+        {/* Hero */}
+        <section className="mx-auto max-w-6xl px-5 py-16 md:py-24">
+          <div className="grid items-center gap-12 md:grid-cols-2">
+            <div>
+              <h1 className="font-serif text-5xl leading-tight text-primary-strong md:text-6xl">
+                Palavra Amiga
+              </h1>
+              <p className="mt-4 font-serif text-2xl text-foreground">
+                Reflexões curtas para começar bem o dia.
+              </p>
+              <p className="mt-5 max-w-md text-base leading-relaxed text-muted-foreground">
+                Receba uma mensagem diária com citações, versículos e pequenas
+                reflexões para cultivar presença, coragem e serenidade.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a
+                  href={APP_URL}
+                  className="rounded-full bg-primary-strong px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary"
+                >
+                  Abrir app
+                </a>
+                <a
+                  href="#como-funciona"
+                  className="rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-primary-strong transition-colors hover:bg-accent"
+                >
+                  Como funciona
+                </a>
+              </div>
+            </div>
+            <div className="flex justify-center">
+              <AppPreview />
+            </div>
+          </div>
+        </section>
+
+        {/* Como funciona */}
+        <section id="como-funciona" className="border-t border-border bg-muted/40">
+          <div className="mx-auto max-w-6xl px-5 py-16 md:py-20">
+            <h2 className="font-serif text-3xl text-primary-strong">Como funciona</h2>
+            <div className="mt-10 grid gap-6 md:grid-cols-3">
+              {passos.map(({ icon: Icon, title, text }) => (
+                <div key={title} className="rounded-xl border border-border bg-card p-6">
+                  <div className="flex size-10 items-center justify-center rounded-lg bg-accent text-primary-strong">
+                    <Icon className="size-5" />
+                  </div>
+                  <h3 className="mt-4 font-serif text-xl text-foreground">{title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Recursos */}
+        <section id="recursos" className="mx-auto max-w-6xl px-5 py-16 md:py-20">
+          <h2 className="font-serif text-3xl text-primary-strong">Recursos</h2>
+          <p className="mt-2 max-w-lg text-sm text-muted-foreground">
+            Tudo pensado para uma leitura matinal simples e tranquila.
+          </p>
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {recursos.map(({ icon: Icon, title, text }) => (
+              <div key={title} className="rounded-xl border border-border bg-card p-5">
+                <Icon className="size-5 text-primary" />
+                <h3 className="mt-3 font-serif text-lg text-foreground">{title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{text}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* PWA opcional */}
+        <section className="border-t border-border bg-muted/40">
+          <div className="mx-auto max-w-3xl px-5 py-16 text-center md:py-20">
+            <h2 className="font-serif text-3xl text-primary-strong">
+              Use no navegador ou instale se quiser
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
+              O Palavra Amiga funciona como PWA: você pode abrir pelo navegador em
+              app.palavraamiga.com.br e, se desejar, instalar na tela inicial do
+              celular. A instalação é opcional.
+            </p>
+            <div className="mt-7">
+              <a
+                href={APP_URL}
+                className="rounded-full bg-primary-strong px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary"
+              >
+                Abrir app
+              </a>
+            </div>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Em breve também haverá uma versão APK para Android.
+            </p>
+          </div>
+        </section>
+
+        {/* Instalar */}
+        <section id="instalar" className="mx-auto max-w-6xl px-5 py-16 md:py-20">
+          <h2 className="font-serif text-3xl text-primary-strong">Instalar</h2>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            <div className="rounded-xl border border-border bg-card p-6">
+              <h3 className="font-serif text-xl text-foreground">Pelo navegador</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                Acesse app.palavraamiga.com.br e use normalmente.
+              </p>
+              <a
+                href={APP_URL}
+                className="mt-4 inline-block rounded-full bg-primary-strong px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary"
+              >
+                Abrir app
+              </a>
+            </div>
+            <div className="rounded-xl border border-border bg-card p-6">
+              <h3 className="font-serif text-xl text-foreground">Como PWA</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                No celular, use a opção “Adicionar à tela inicial” quando
+                disponível.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-card p-6">
+              <h3 className="font-serif text-xl text-foreground">APK Android</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                Em breve, o APK assinado será disponibilizado em uma página
+                oficial de download.
+              </p>
+              <button
+                disabled
+                className="mt-4 inline-block cursor-not-allowed rounded-full border border-border bg-secondary px-5 py-2.5 text-sm font-medium text-muted-foreground"
+              >
+                Em breve
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* Privacidade e confiança */}
+        <section className="border-t border-border bg-muted/40">
+          <div className="mx-auto max-w-3xl px-5 py-16 md:py-20">
+            <div className="flex size-11 items-center justify-center rounded-lg bg-accent text-primary-strong">
+              <ShieldCheck className="size-6" />
+            </div>
+            <h2 className="mt-5 font-serif text-3xl text-primary-strong">
+              Privacidade e confiança
+            </h2>
+            <ul className="mt-6 space-y-3 text-base leading-relaxed text-muted-foreground">
+              <li>O app prioriza uma experiência simples e respeitosa.</li>
+              <li>
+                Dados essenciais são usados apenas para funcionamento da conta,
+                preferências e histórico.
+              </li>
+              <li>O app foi pensado para funcionar de forma offline-first.</li>
+            </ul>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <a
+                href="/privacidade"
+                className="rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium text-primary-strong transition-colors hover:bg-accent"
+              >
+                Política de Privacidade
+              </a>
+              <a
+                href="/termos"
+                className="rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium text-primary-strong transition-colors hover:bg-accent"
+              >
+                Termos de Uso
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section id="faq" className="mx-auto max-w-3xl px-5 py-16 md:py-20">
+          <h2 className="font-serif text-3xl text-primary-strong">Perguntas frequentes</h2>
+          <div className="mt-8 divide-y divide-border border-y border-border">
+            {faq.map(({ q, a }) => (
+              <details key={q} className="group py-4">
+                <summary className="cursor-pointer list-none font-serif text-lg text-foreground marker:hidden">
+                  {q}
+                </summary>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      </main>
+      <SiteFooter />
     </div>
   );
 }
