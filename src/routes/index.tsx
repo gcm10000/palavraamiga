@@ -148,7 +148,7 @@ function Index() {
           </div>
         </section>
 
-        {/* PWA opcional */}
+        {/* Use no navegador ou instale */}
         <section className="border-t border-border bg-muted/40">
           <div className="mx-auto max-w-3xl px-5 py-16 text-center md:py-20">
             <h2 className="font-serif text-3xl text-primary-strong">

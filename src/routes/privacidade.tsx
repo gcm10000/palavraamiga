@@ -9,7 +9,7 @@ export const Route = createFileRoute("/privacidade")({
       {
         name: "description",
         content:
-          "Como o Palavra Amiga trata seus dados: uso essencial para conta, preferências e histórico, com foco em uma experiência simples e offline-first.",
+          "Como o Palavra Amiga trata seus dados: uso essencial para conta, preferências e histórico, com foco em uma experiência simples que funciona com e sem internet.",
       },
       { property: "og:title", content: "Política de Privacidade - Palavra Amiga" },
       { property: "og:url", content: "/privacidade" },
