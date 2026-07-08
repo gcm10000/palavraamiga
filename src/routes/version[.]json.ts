@@ -14,15 +14,21 @@ const versionInfo = {
   publishedAt: "2026-07-08T00:00:00-03:00",
 };
 
+const headers = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type",
+  "Cache-Control": "no-store",
+};
+
 export const Route = createFileRoute("/version.json")({
   server: {
     handlers: {
       GET: async () =>
         Response.json(versionInfo, {
-          headers: {
-            "Cache-Control": "public, max-age=60",
-          },
+          headers,
         }),
+      OPTIONS: async () => new Response(null, { status: 204, headers }),
     },
   },
 });
