@@ -15,7 +15,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AppPreview } from "@/components/AppPreview";
 
-const APP_URL = "https://app.palavraamiga.com.br";
+const APP_URL = "https://app-palavramiga.lovable.app/";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -65,7 +65,7 @@ const faq = [
   },
   {
     q: "Onde acesso o app?",
-    a: "Em https://app.palavraamiga.com.br",
+    a: "Em https://app-palavramiga.lovable.app/",
   },
   {
     q: "O app é gratuito?",
@@ -156,7 +156,7 @@ function Index() {
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
               O Palavra Amiga funciona direto no navegador: basta acessar
-              app.palavraamiga.com.br. Se você quiser, pode também adicionar o
+              app-palavramiga.lovable.app. Se você quiser, pode também adicionar o
               ícone à tela inicial do celular, como se fosse um app. A
               instalação é opcional.
             </p>
@@ -181,7 +181,7 @@ function Index() {
             <div className="rounded-xl border border-border bg-card p-6">
               <h3 className="font-serif text-xl text-foreground">Pelo navegador</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Acesse app.palavraamiga.com.br e use normalmente.
+                Acesse app-palavramiga.lovable.app e use normalmente.
               </p>
               <a
                 href={APP_URL}

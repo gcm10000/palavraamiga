@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
-const APP_URL = "https://app.palavraamiga.com.br";
+const APP_URL = "https://app-palavramiga.lovable.app/";
 
 export function SiteFooter() {
   return (
