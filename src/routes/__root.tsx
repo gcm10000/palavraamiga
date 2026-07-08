@@ -81,20 +81,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Receba reflexões diárias com citações, versículos, favoritos e histórico. As mensagens ficam disponíveis mesmo sem internet. Use pelo navegador ou adicione à tela inicial do celular.",
+          "Transforme suas manhãs em momentos melhores. Receba reflexões diárias com citações, versículos.",
       },
       { name: "author", content: "Palavra Amiga" },
-      { property: "og:title", content: "Palavra Amiga" },
-      { property: "og:description", content: "Reflexões curtas para começar bem o dia." },
+      { property: "og:title", content: "Palavra Amiga - Reflexões curtas para começar bem o dia" },
+      { property: "og:description", content: "Transforme suas manhãs em momentos melhores. Receba reflexões diárias com citações, versículos." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Palavra Amiga - Reflexões curtas para começar bem o dia" },
+      { name: "twitter:description", content: "Transforme suas manhãs em momentos melhores. Receba reflexões diárias com citações, versículos." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a7d7ce4b-e3c5-488e-adf7-892bee4e9f3b/id-preview-d8652418--df324180-a54d-48a6-849d-6f54a71b7940.lovable.app-1783511566742.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a7d7ce4b-e3c5-488e-adf7-892bee4e9f3b/id-preview-d8652418--df324180-a54d-48a6-849d-6f54a71b7940.lovable.app-1783511566742.png" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
