@@ -53,7 +53,7 @@ const recursos = [
 const faq = [
   {
     q: "Preciso instalar o app?",
-    a: "Não. Você pode usar pelo navegador. A instalação como PWA é opcional.",
+    a: "Não. Você pode usar pelo navegador. A instalação na tela inicial é opcional.",
   },
   {
     q: "Funciona sem internet?",
@@ -61,7 +61,7 @@ const faq = [
   },
   {
     q: "Existe versão Android?",
-    a: "A versão APK está prevista para distribuição manual enquanto a publicação na Google Play fica para uma etapa futura.",
+    a: "Uma versão própria para Android está prevista. No começo, será disponibilizada para download manual enquanto a publicação na Google Play fica para uma etapa futura.",
   },
   {
     q: "Onde acesso o app?",
@@ -169,7 +169,7 @@ function Index() {
               </a>
             </div>
             <p className="mt-4 text-sm text-muted-foreground">
-              Em breve também haverá uma versão APK para Android.
+              Em breve também haverá uma versão própria para Android.
             </p>
           </div>
         </section>
