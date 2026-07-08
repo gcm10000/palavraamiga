@@ -9,11 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VersionDotjsonRouteImport } from './routes/version[.]json'
 import { Route as TermosRouteImport } from './routes/termos'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PrivacidadeRouteImport } from './routes/privacidade'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VersionDotjsonRoute = VersionDotjsonRouteImport.update({
+  id: '/version.json',
+  path: '/version.json',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermosRoute = TermosRouteImport.update({
   id: '/termos',
   path: '/termos',
@@ -40,12 +46,14 @@ export interface FileRoutesByFullPath {
   '/privacidade': typeof PrivacidadeRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/termos': typeof TermosRoute
+  '/version.json': typeof VersionDotjsonRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/privacidade': typeof PrivacidadeRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/termos': typeof TermosRoute
+  '/version.json': typeof VersionDotjsonRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,20 @@ export interface FileRoutesById {
   '/privacidade': typeof PrivacidadeRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/termos': typeof TermosRoute
+  '/version.json': typeof VersionDotjsonRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/privacidade' | '/sitemap.xml' | '/termos'
+  fullPaths: '/' | '/privacidade' | '/sitemap.xml' | '/termos' | '/version.json'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/privacidade' | '/sitemap.xml' | '/termos'
-  id: '__root__' | '/' | '/privacidade' | '/sitemap.xml' | '/termos'
+  to: '/' | '/privacidade' | '/sitemap.xml' | '/termos' | '/version.json'
+  id:
+    | '__root__'
+    | '/'
+    | '/privacidade'
+    | '/sitemap.xml'
+    | '/termos'
+    | '/version.json'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,10 +82,18 @@ export interface RootRouteChildren {
   PrivacidadeRoute: typeof PrivacidadeRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermosRoute: typeof TermosRoute
+  VersionDotjsonRoute: typeof VersionDotjsonRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/version.json': {
+      id: '/version.json'
+      path: '/version.json'
+      fullPath: '/version.json'
+      preLoaderRoute: typeof VersionDotjsonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/termos': {
       id: '/termos'
       path: '/termos'
@@ -107,6 +130,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacidadeRoute: PrivacidadeRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermosRoute: TermosRoute,
+  VersionDotjsonRoute: VersionDotjsonRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
