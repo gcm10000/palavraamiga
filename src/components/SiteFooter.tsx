@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 
 const APP_URL = "https://app-palavramiga.lovable.app/";
+const APK_DOWNLOAD_URL = "https://palavraamiga.lovable.app/downloads/palavra-amiga-android.apk";
 
 export function SiteFooter() {
   return (
@@ -19,6 +20,9 @@ export function SiteFooter() {
             </a>
             <a href="/#instalar" className="text-muted-foreground transition-colors hover:text-foreground">
               Instalar
+            </a>
+            <a href={APK_DOWNLOAD_URL} className="text-muted-foreground transition-colors hover:text-foreground">
+              Baixar Android
             </a>
             <Link to="/privacidade" className="text-muted-foreground transition-colors hover:text-foreground">
               Privacidade

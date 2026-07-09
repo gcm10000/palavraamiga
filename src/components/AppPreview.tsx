@@ -16,8 +16,7 @@ export function AppPreview() {
 
           <div className="mt-5 rounded-xl border border-border bg-card p-4">
             <p className="font-serif text-[15px] leading-relaxed text-foreground">
-              “A coragem não é a ausência do medo, mas a decisão de seguir apesar
-              dele.”
+              "A coragem não é a ausência do medo, mas a decisão de seguir apesar dele."
             </p>
             <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
               Comece hoje dando um pequeno passo. O caminho se abre a quem

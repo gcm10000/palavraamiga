@@ -5,13 +5,14 @@ const versionInfo = {
   latestVersion: "1.0.0",
   latestVersionCode: 1,
   minRequiredVersionCode: 1,
-  apkUrl: "",
+  apkUrl: "https://palavraamiga.lovable.app/downloads/palavra-amiga-android.apk",
   changelog: [
     "Primeira versão de testes do Palavra Amiga.",
     "PWA disponível em https://app-palavramiga.lovable.app/.",
+    "APK Android disponível para download manual em teste inicial.",
   ],
   forceUpdate: false,
-  publishedAt: "2026-07-08T00:00:00-03:00",
+  publishedAt: "2026-07-09T00:00:00-03:00",
 };
 
 const headers = {

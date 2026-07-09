@@ -16,6 +16,8 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { AppPreview } from "@/components/AppPreview";
 
 const APP_URL = "https://app-palavramiga.lovable.app/";
+const APK_DOWNLOAD_URL = "https://palavraamiga.lovable.app/downloads/palavra-amiga-android.apk";
+const ANDROID_VERSION = "1.0.0";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -47,7 +49,7 @@ const recursos = [
   { icon: Bell, title: "Lembrete diário", text: "Receba uma notificação gentil no horário que preferir." },
   { icon: CloudOff, title: "Leitura sem internet", text: "As mensagens já abertas ficam disponíveis mesmo quando a conexão cai." },
   { icon: Smartphone, title: "Use pelo navegador ou como app", text: "Você pode abrir no navegador ou adicionar o ícone à tela inicial do celular, se quiser." },
-  { icon: Download, title: "App para Android em breve", text: "Uma versão própria para Android está prevista para ser disponibilizada no futuro." },
+  { icon: Download, title: "APK Android em teste", text: "Baixe a versão Android enquanto a publicação na Google Play fica para uma etapa futura." },
 ];
 
 const faq = [
@@ -61,7 +63,7 @@ const faq = [
   },
   {
     q: "Existe versão Android?",
-    a: "Uma versão própria para Android está prevista. No começo, será disponibilizada para download manual enquanto a publicação na Google Play fica para uma etapa futura.",
+    a: `Sim. A versão Android ${ANDROID_VERSION} está disponível para download manual em teste inicial. A publicação na Google Play fica para uma etapa futura.`,
   },
   {
     q: "Onde acesso o app?",
@@ -78,7 +80,6 @@ function Index() {
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
       <main id="inicio">
-        {/* Hero */}
         <section className="mx-auto max-w-6xl px-5 py-16 md:py-24">
           <div className="grid items-center gap-12 md:grid-cols-2">
             <div>
@@ -100,6 +101,12 @@ function Index() {
                   Abrir app
                 </a>
                 <a
+                  href={APK_DOWNLOAD_URL}
+                  className="rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-primary-strong transition-colors hover:bg-accent"
+                >
+                  Baixar Android
+                </a>
+                <a
                   href="#como-funciona"
                   className="rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-primary-strong transition-colors hover:bg-accent"
                 >
@@ -113,7 +120,6 @@ function Index() {
           </div>
         </section>
 
-        {/* Como funciona */}
         <section id="como-funciona" className="border-t border-border bg-muted/40">
           <div className="mx-auto max-w-6xl px-5 py-16 md:py-20">
             <h2 className="font-serif text-3xl text-primary-strong">Como funciona</h2>
@@ -131,7 +137,6 @@ function Index() {
           </div>
         </section>
 
-        {/* Recursos */}
         <section id="recursos" className="mx-auto max-w-6xl px-5 py-16 md:py-20">
           <h2 className="font-serif text-3xl text-primary-strong">Recursos</h2>
           <p className="mt-2 max-w-lg text-sm text-muted-foreground">
@@ -148,7 +153,6 @@ function Index() {
           </div>
         </section>
 
-        {/* Use no navegador ou instale */}
         <section className="border-t border-border bg-muted/40">
           <div className="mx-auto max-w-3xl px-5 py-16 text-center md:py-20">
             <h2 className="font-serif text-3xl text-primary-strong">
@@ -157,24 +161,28 @@ function Index() {
             <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
               O Palavra Amiga funciona direto no navegador: basta acessar
               app-palavramiga.lovable.app. Se você quiser, pode também adicionar o
-              ícone à tela inicial do celular, como se fosse um app. A
-              instalação é opcional.
+              ícone à tela inicial do celular, como se fosse um app. A instalação é opcional.
             </p>
-            <div className="mt-7">
+            <div className="mt-7 flex flex-wrap justify-center gap-3">
               <a
                 href={APP_URL}
                 className="rounded-full bg-primary-strong px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary"
               >
                 Abrir app
               </a>
+              <a
+                href={APK_DOWNLOAD_URL}
+                className="rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-primary-strong transition-colors hover:bg-accent"
+              >
+                Baixar APK Android
+              </a>
             </div>
             <p className="mt-4 text-sm text-muted-foreground">
-              Em breve também haverá uma versão própria para Android.
+              O APK está em teste inicial e ainda não está publicado na Google Play.
             </p>
           </div>
         </section>
 
-        {/* Instalar */}
         <section id="instalar" className="mx-auto max-w-6xl px-5 py-16 md:py-20">
           <h2 className="font-serif text-3xl text-primary-strong">Instalar</h2>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -193,27 +201,27 @@ function Index() {
             <div className="rounded-xl border border-border bg-card p-6">
               <h3 className="font-serif text-xl text-foreground">Como app no celular</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                No celular, use a opção “Adicionar à tela inicial” quando
-                disponível. O app vira um ícone como qualquer outro.
+                No celular, use a opção "Adicionar à tela inicial" quando disponível.
+                O app vira um ícone como qualquer outro.
               </p>
             </div>
             <div className="rounded-xl border border-border bg-card p-6">
               <h3 className="font-serif text-xl text-foreground">App Android</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Em breve, uma versão própria para Android será disponibilizada em
-                uma página oficial de download.
+                Baixe o APK da versão {ANDROID_VERSION}. Esta é uma versão Android em teste inicial,
+                distribuída manualmente enquanto a Google Play fica para uma etapa futura.
               </p>
-              <button
-                disabled
-                className="mt-4 inline-block cursor-not-allowed rounded-full border border-border bg-secondary px-5 py-2.5 text-sm font-medium text-muted-foreground"
+              <a
+                href={APK_DOWNLOAD_URL}
+                className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary-strong px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary"
               >
-                Em breve
-              </button>
+                <Download className="size-4" />
+                Baixar APK
+              </a>
             </div>
           </div>
         </section>
 
-        {/* Privacidade e confiança */}
         <section className="border-t border-border bg-muted/40">
           <div className="mx-auto max-w-3xl px-5 py-16 md:py-20">
             <div className="flex size-11 items-center justify-center rounded-lg bg-accent text-primary-strong">
@@ -247,7 +255,6 @@ function Index() {
           </div>
         </section>
 
-        {/* FAQ */}
         <section id="faq" className="mx-auto max-w-3xl px-5 py-16 md:py-20">
           <h2 className="font-serif text-3xl text-primary-strong">Perguntas frequentes</h2>
           <div className="mt-8 divide-y divide-border border-y border-border">
