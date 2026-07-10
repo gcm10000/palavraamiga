@@ -33,17 +33,21 @@ O cliente ainda aceita o formato legado com campos na raiz para não quebrar bui
 
 ## APK Android
 
-Enquanto o app não estiver publicado na Google Play, o APK oficial fica no repositório público de releases:
+Enquanto o app não estiver publicado na Google Play, o APK oficial fica no repositório público de releases.
+O `android.apkUrl` deve apontar para um asset versionado e imutável:
 
 ```text
-https://github.com/gcm10000/palavraamiga-releases/releases/latest/download/palavra-amiga-android.apk
+https://github.com/gcm10000/palavraamiga-releases/releases/download/v1.0.3/palavra-amiga-android-v1.0.3.apk
 ```
 
-Regra operacional: o asset anexado ao release mais recente deve se chamar exatamente:
+Regra operacional: o asset oficial de cada release deve seguir este padrão:
 
 ```text
-palavra-amiga-android.apk
+palavra-amiga-android-vX.Y.Z.apk
 ```
+
+O asset `palavra-amiga-android.apk` pode continuar existindo como alias de compatibilidade
+para links antigos, mas não deve ser a URL principal do manifesto.
 
 O repositório de releases é público e não deve receber código-fonte do app. Ele existe apenas para distribuir APKs e outros artefatos públicos.
 
@@ -55,13 +59,13 @@ Nesta máquina, use o `gh` pelo caminho completo:
 & 'C:\Users\gabri\AppData\Local\Programs\GitHub CLI\bin\gh.exe' --version
 ```
 
-Ao publicar APKs, copie o build `app-release.apk` para o nome canônico antes do upload:
+Ao publicar APKs, copie o build `app-release.apk` para o nome versionado antes do upload:
 
 ```text
-palavra-amiga-android.apk
+palavra-amiga-android-vX.Y.Z.apk
 ```
 
-Não use `app-release.apk#palavra-amiga-android.apk` esperando que o GitHub renomeie o arquivo. No `gh`, o trecho depois de `#` vira apenas label do asset; a URL pública continua usando o nome real do arquivo enviado.
+Não use `app-release.apk#palavra-amiga-android-vX.Y.Z.apk` esperando que o GitHub renomeie o arquivo. No `gh`, o trecho depois de `#` vira apenas label do asset; a URL pública continua usando o nome real do arquivo enviado.
 
 Comandos completos de criação, upload com `--clobber` e verificação do redirect `latest/download` estão no documento do app:
 
@@ -72,7 +76,7 @@ PalavraAmiga_pwa/docs/VERSIONAMENTO_E_RELEASE.md
 ## Antes de publicar uma nova versão
 
 1. Gere o APK release assinado no repositório do app.
-2. Publique o APK no repositório público `gcm10000/palavraamiga-releases` com o nome `palavra-amiga-android.apk`.
+2. Publique o APK no repositório público `gcm10000/palavraamiga-releases` com o nome `palavra-amiga-android-vX.Y.Z.apk`.
 3. Atualize `android.latestVersion`, `android.latestVersionCode`, `android.apkUrl`, `android.changelog` e `android.publishedAt`.
 4. Para PWA, atualize `pwa.latestVersion`, `pwa.latestVersionCode`, `pwa.changelog` e `pwa.publishedAt`.
 5. Ajuste `minRequiredVersionCode` ou `forceUpdate` apenas quando for necessário bloquear versões antigas.

@@ -8,7 +8,7 @@ const versionInfo = {
     latestVersionCode: 4,
     minRequiredVersionCode: 1,
     apkUrl:
-      "https://github.com/gcm10000/palavraamiga-releases/releases/latest/download/palavra-amiga-android.apk",
+      "https://github.com/gcm10000/palavraamiga-releases/releases/download/v1.0.3/palavra-amiga-android-v1.0.3.apk",
     storeUrl: "",
     changelog: [
       "Correção da consulta de atualizações no APK.",
