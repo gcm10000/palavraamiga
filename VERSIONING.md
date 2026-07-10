@@ -15,6 +15,11 @@ src/routes/version[.]json.ts
 
 A rota server é usada pelo Lovable. O arquivo público oferece compatibilidade com hospedagem estática.
 
+O arquivo `public/_headers` também faz parte do contrato. Ele garante que `/version.json`
+continue respondendo com CORS (`Access-Control-Allow-Origin: *`) e `Cache-Control: no-store`
+quando a hospedagem servir o arquivo estático antes da rota server. Sem esse header, o APK
+Capacitor bloqueia a consulta por CORS e mostra atualização como indisponível.
+
 ## Contrato atual
 
 O manifesto usa `schemaVersion: 2` e separa políticas por plataforma:
