@@ -17,26 +17,26 @@ A rota server é usada pelo Lovable. O arquivo público oferece compatibilidade 
 
 ## APK Android
 
-Enquanto o app não estiver publicado na Google Play, o APK oficial da V1 fica publicado junto do site institucional:
+Enquanto o app não estiver publicado na Google Play, o APK oficial da V1 fica publicado no repositório público de releases:
 
 ```text
-https://palavraamiga.lovable.app/downloads/palavra-amiga-android.apk
+https://github.com/gcm10000/palavraamiga-releases/releases/latest/download/palavra-amiga-android.apk
 ```
 
 O site institucional usa essa URL nos botões de download e o manifesto `version.json` usa a mesma URL em `apkUrl`.
 
-Regra operacional: o arquivo versionado no site deve se chamar exatamente:
+Regra operacional: o asset anexado ao release mais recente deve se chamar exatamente:
 
 ```text
-public/downloads/palavra-amiga-android.apk
+palavra-amiga-android.apk
 ```
 
-Quando migrarmos para GitHub Releases, mantenha o nome público do asset como `palavra-amiga-android.apk` e atualize `apkUrl` nos dois manifestos.
+O repositório de releases é público e não deve receber código-fonte do app. Ele existe apenas para distribuir APKs e outros artefatos públicos.
 
 ## Antes de publicar uma nova versão
 
 1. Gere o APK release assinado no repositório do app.
-2. Copie o APK para `public/downloads/palavra-amiga-android.apk`.
+2. Publique o APK no repositório público `gcm10000/palavraamiga-releases` com o nome `palavra-amiga-android.apk`.
 3. Atualize `latestVersion`, `latestVersionCode`, `apkUrl`, `changelog` e `publishedAt` nos dois arquivos de manifesto.
 4. Ajuste `minRequiredVersionCode` ou `forceUpdate` apenas quando for necessário bloquear versões antigas.
 5. Faça o publish manual no Lovable.

@@ -16,7 +16,8 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { AppPreview } from "@/components/AppPreview";
 
 const APP_URL = "https://app-palavramiga.lovable.app/";
-const APK_DOWNLOAD_URL = "https://palavraamiga.lovable.app/downloads/palavra-amiga-android.apk";
+const APK_DOWNLOAD_URL =
+  "https://github.com/gcm10000/palavraamiga-releases/releases/latest/download/palavra-amiga-android.apk";
 const ANDROID_VERSION = "1.0.0";
 
 export const Route = createFileRoute("/")({

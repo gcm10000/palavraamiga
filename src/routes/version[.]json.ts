@@ -5,7 +5,8 @@ const versionInfo = {
   latestVersion: "1.0.0",
   latestVersionCode: 1,
   minRequiredVersionCode: 1,
-  apkUrl: "https://palavraamiga.lovable.app/downloads/palavra-amiga-android.apk",
+  apkUrl:
+    "https://github.com/gcm10000/palavraamiga-releases/releases/latest/download/palavra-amiga-android.apk",
   changelog: [
     "Primeira versão de testes do Palavra Amiga.",
     "PWA disponível em https://app-palavramiga.lovable.app/.",
