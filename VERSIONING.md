@@ -41,6 +41,28 @@ palavra-amiga-android.apk
 
 O repositório de releases é público e não deve receber código-fonte do app. Ele existe apenas para distribuir APKs e outros artefatos públicos.
 
+## Publicação com GitHub CLI
+
+Nesta máquina, use o `gh` pelo caminho completo:
+
+```powershell
+& 'C:\Users\gabri\AppData\Local\Programs\GitHub CLI\bin\gh.exe' --version
+```
+
+Ao publicar APKs, copie o build `app-release.apk` para o nome canônico antes do upload:
+
+```text
+palavra-amiga-android.apk
+```
+
+Não use `app-release.apk#palavra-amiga-android.apk` esperando que o GitHub renomeie o arquivo. No `gh`, o trecho depois de `#` vira apenas label do asset; a URL pública continua usando o nome real do arquivo enviado.
+
+Comandos completos de criação, upload com `--clobber` e verificação do redirect `latest/download` estão no documento do app:
+
+```text
+PalavraAmiga_pwa/docs/VERSIONAMENTO_E_RELEASE.md
+```
+
 ## Antes de publicar uma nova versão
 
 1. Gere o APK release assinado no repositório do app.
