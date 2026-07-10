@@ -6,19 +6,20 @@ Este site hospeda o manifesto usado pelo Android e pelo PWA para políticas oper
 https://palavraamiga.lovable.app/version.json
 ```
 
-Há duas representações que devem permanecer idênticas:
+O manifesto é mantido na rota server:
 
 ```text
-public/version.json
 src/routes/version[.]json.ts
 ```
 
-A rota server é usada pelo Lovable. O arquivo público oferece compatibilidade com hospedagem estática.
+Não mantenha `public/version.json` neste projeto enquanto o Lovable estiver servindo a
+rota server. Se o arquivo estático existir, a hospedagem pode servir esse arquivo antes da
+rota e remover headers importantes como CORS.
 
 O arquivo `public/_headers` também faz parte do contrato. Ele garante que `/version.json`
 continue respondendo com CORS (`Access-Control-Allow-Origin: *`) e `Cache-Control: no-store`
-quando a hospedagem servir o arquivo estático antes da rota server. Sem esse header, o APK
-Capacitor bloqueia a consulta por CORS e mostra atualização como indisponível.
+em hospedagens estáticas que respeitam esse arquivo. Sem CORS, o APK Capacitor bloqueia a
+consulta e mostra atualização como indisponível.
 
 ## Contrato atual
 
