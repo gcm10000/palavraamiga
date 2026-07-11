@@ -4,31 +4,31 @@ import type {} from "@tanstack/react-start";
 const versionInfo = {
   schemaVersion: 2,
   android: {
-    latestVersion: "1.0.8",
-    latestVersionCode: 9,
+    latestVersion: "1.0.9",
+    latestVersionCode: 10,
     minRequiredVersionCode: 5,
     apkUrl:
-      "https://github.com/gcm10000/palavraamiga-releases/releases/download/v1.0.8/palavra-amiga-android-v1.0.8.apk",
+      "https://github.com/gcm10000/palavraamiga-releases/releases/download/v1.0.9/palavra-amiga-android-v1.0.9.apk",
     storeUrl: "",
     changelog: [
-      "A prévia agora é gerada pelo mesmo PNG que será compartilhado.",
-      "O layout da imagem reduz e limita textos longos para evitar cortes visuais.",
-      "O compartilhamento de imagem envia um texto curto ao Android para reduzir instabilidade.",
+      "O compartilhamento nativo de imagem usa um Intent mais simples, somente com o arquivo PNG.",
+      "A prévia continua sendo gerada pelo mesmo PNG que será compartilhado.",
+      "Textos longos seguem limitados para evitar cortes visuais.",
     ],
     forceUpdate: false,
-    publishedAt: "2026-07-11T16:30:00-03:00",
+    publishedAt: "2026-07-11T16:50:00-03:00",
   },
   pwa: {
-    latestVersion: "1.0.8",
-    latestVersionCode: 9,
+    latestVersion: "1.0.9",
+    latestVersionCode: 10,
     minRequiredVersionCode: 1,
     changelog: [
-      "A prévia agora é gerada pelo mesmo PNG que será compartilhado.",
-      "O layout da imagem reduz e limita textos longos para evitar cortes visuais.",
+      "A prévia continua sendo gerada pelo mesmo PNG que será compartilhado.",
+      "Textos longos seguem limitados para evitar cortes visuais.",
       "O download manual da imagem continua disponível como ação separada.",
     ],
     forceUpdate: false,
-    publishedAt: "2026-07-11T16:30:00-03:00",
+    publishedAt: "2026-07-11T16:50:00-03:00",
   },
   maintenance: {
     enabled: false,
