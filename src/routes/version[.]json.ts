@@ -4,31 +4,31 @@ import type {} from "@tanstack/react-start";
 const versionInfo = {
   schemaVersion: 2,
   android: {
-    latestVersion: "1.0.4",
-    latestVersionCode: 5,
+    latestVersion: "1.0.5",
+    latestVersionCode: 6,
     minRequiredVersionCode: 5,
     apkUrl:
-      "https://github.com/gcm10000/palavraamiga-releases/releases/download/v1.0.4/palavra-amiga-android-v1.0.4.apk",
+      "https://github.com/gcm10000/palavraamiga-releases/releases/download/v1.0.5/palavra-amiga-android-v1.0.5.apk",
     storeUrl: "",
     changelog: [
-      "Correção do isolamento de sessão ao trocar de conta.",
-      "Limpeza completa de cache offline, favoritos pendentes e fila local no logout.",
-      "Proteção contra respostas antigas regravarem dados da conta anterior.",
-    ],
-    forceUpdate: true,
-    publishedAt: "2026-07-11T03:05:00-03:00",
-  },
-  pwa: {
-    latestVersion: "1.0.4",
-    latestVersionCode: 5,
-    minRequiredVersionCode: 1,
-    changelog: [
-      "Correção do isolamento de sessão ao trocar de conta.",
-      "Reset da navegação ao mudar de usuário autenticado.",
-      "Proteção contra cache antigo reaparecer depois do logout.",
+      "Novo estúdio de compartilhamento com imagem para status e formato quadrado.",
+      "Templates Sereno, Noturno e Minimalista para compartilhar reflexões.",
+      "Compartilhamento por texto simples, imagem ou download manual.",
     ],
     forceUpdate: false,
-    publishedAt: "2026-07-11T03:05:00-03:00",
+    publishedAt: "2026-07-11T03:30:00-03:00",
+  },
+  pwa: {
+    latestVersion: "1.0.5",
+    latestVersionCode: 6,
+    minRequiredVersionCode: 1,
+    changelog: [
+      "Novo estúdio de compartilhamento com imagem para status e formato quadrado.",
+      "Templates Sereno, Noturno e Minimalista para compartilhar reflexões.",
+      "Compartilhamento por texto simples, imagem ou download manual.",
+    ],
+    forceUpdate: false,
+    publishedAt: "2026-07-11T03:30:00-03:00",
   },
   maintenance: {
     enabled: false,
