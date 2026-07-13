@@ -19,7 +19,7 @@ export const Route = createFileRoute("/termos")({
   component: Termos,
 });
 
-function Termos() {
+export function Termos() {
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />

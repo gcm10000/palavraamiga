@@ -14,11 +14,12 @@ import {
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AppPreview } from "@/components/AppPreview";
+import { sitePath } from "@/lib/site-links";
 
 const APP_URL = "https://app-palavramiga.lovable.app/";
 const APK_DOWNLOAD_URL =
   "https://github.com/gcm10000/palavraamiga-releases/releases/latest/download/palavra-amiga-android.apk";
-const ANDROID_VERSION = "1.0.0";
+const ANDROID_VERSION = "1.0.11";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -76,7 +77,7 @@ const faq = [
   },
 ];
 
-function Index() {
+export function Index() {
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
@@ -108,7 +109,7 @@ function Index() {
                   Baixar Android
                 </a>
                 <a
-                  href="#como-funciona"
+                  href={sitePath("/#como-funciona")}
                   className="rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-primary-strong transition-colors hover:bg-accent"
                 >
                   Como funciona
@@ -241,13 +242,13 @@ function Index() {
             </ul>
             <div className="mt-7 flex flex-wrap gap-3">
               <a
-                href="/privacidade"
+                href={sitePath("/privacidade")}
                 className="rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium text-primary-strong transition-colors hover:bg-accent"
               >
                 Política de Privacidade
               </a>
               <a
-                href="/termos"
+                href={sitePath("/termos")}
                 className="rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium text-primary-strong transition-colors hover:bg-accent"
               >
                 Termos de Uso

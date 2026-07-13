@@ -19,7 +19,7 @@ export const Route = createFileRoute("/privacidade")({
   component: Privacidade,
 });
 
-function Privacidade() {
+export function Privacidade() {
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />

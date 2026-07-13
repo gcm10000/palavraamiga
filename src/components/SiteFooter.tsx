@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { sitePath } from "@/lib/site-links";
 
 const APP_URL = "https://app-palavramiga.lovable.app/";
 const APK_DOWNLOAD_URL =
@@ -19,18 +19,18 @@ export function SiteFooter() {
             <a href={APP_URL} className="text-muted-foreground transition-colors hover:text-foreground">
               Abrir app
             </a>
-            <a href="/#instalar" className="text-muted-foreground transition-colors hover:text-foreground">
+            <a href={sitePath("/#instalar")} className="text-muted-foreground transition-colors hover:text-foreground">
               Instalar
             </a>
             <a href={APK_DOWNLOAD_URL} className="text-muted-foreground transition-colors hover:text-foreground">
               Baixar Android
             </a>
-            <Link to="/privacidade" className="text-muted-foreground transition-colors hover:text-foreground">
+            <a href={sitePath("/privacidade")} className="text-muted-foreground transition-colors hover:text-foreground">
               Privacidade
-            </Link>
-            <Link to="/termos" className="text-muted-foreground transition-colors hover:text-foreground">
+            </a>
+            <a href={sitePath("/termos")} className="text-muted-foreground transition-colors hover:text-foreground">
               Termos
-            </Link>
+            </a>
             <a
               href="mailto:contato@palavraamiga.com.br"
               className="text-muted-foreground transition-colors hover:text-foreground"

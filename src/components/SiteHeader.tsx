@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { sitePath } from "@/lib/site-links";
 
 const APP_URL = "https://app-palavramiga.lovable.app/";
 
@@ -14,14 +14,14 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-        <Link to="/" className="font-serif text-xl text-primary-strong">
+        <a href={sitePath("/")} className="font-serif text-xl text-primary-strong">
           Palavra Amiga
-        </Link>
+        </a>
         <nav className="hidden items-center gap-7 md:flex" aria-label="Navegação principal">
           {navLinks.map((l) => (
             <a
               key={l.href}
-              href={l.href}
+              href={sitePath(l.href)}
               className="text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               {l.label}
