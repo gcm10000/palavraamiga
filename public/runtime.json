@@ -9,7 +9,7 @@
       {
         "id": "lightsail-sa-east-1",
         "baseUrl": "https://api.palavraamiga.com/api",
-        "healthUrl": "https://api.palavraamiga.com/health",
+        "healthUrl": "https://api.palavraamiga.com/api/health",
         "priority": 1,
         "enabled": true,
         "region": "sa-east-1",
