@@ -1,6 +1,6 @@
 import { sitePath } from "@/lib/site-links";
 
-const APP_URL = "https://app-palavramiga.lovable.app/";
+const APP_URL = "https://app.palavraamiga.com/";
 
 const navLinks = [
   { label: "Início", href: "/#inicio" },

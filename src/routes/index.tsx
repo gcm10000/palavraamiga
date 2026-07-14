@@ -16,7 +16,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { AppPreview } from "@/components/AppPreview";
 import { sitePath } from "@/lib/site-links";
 
-const APP_URL = "https://app-palavramiga.lovable.app/";
+const APP_URL = "https://app.palavraamiga.com/";
 const APK_DOWNLOAD_URL =
   "https://github.com/gcm10000/palavraamiga-releases/releases/latest/download/palavra-amiga-android.apk";
 const ANDROID_VERSION = "1.0.11";
@@ -69,7 +69,7 @@ const faq = [
   },
   {
     q: "Onde acesso o app?",
-    a: "Em https://app-palavramiga.lovable.app/",
+    a: "Em https://app.palavraamiga.com/",
   },
   {
     q: "O app é gratuito?",
@@ -162,7 +162,7 @@ export function Index() {
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
               O Palavra Amiga funciona direto no navegador: basta acessar
-              app-palavramiga.lovable.app. Se você quiser, pode também adicionar o
+              app.palavraamiga.com. Se você quiser, pode também adicionar o
               ícone à tela inicial do celular, como se fosse um app. A instalação é opcional.
             </p>
             <div className="mt-7 flex flex-wrap justify-center gap-3">
@@ -191,7 +191,7 @@ export function Index() {
             <div className="rounded-xl border border-border bg-card p-6">
               <h3 className="font-serif text-xl text-foreground">Pelo navegador</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Acesse app-palavramiga.lovable.app e use normalmente.
+                Acesse app.palavraamiga.com e use normalmente.
               </p>
               <a
                 href={APP_URL}
