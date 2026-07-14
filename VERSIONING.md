@@ -3,18 +3,16 @@
 Este site hospeda o manifesto usado pelo Android e pelo PWA para políticas operacionais:
 
 ```text
-https://palavraamiga.lovable.app/version.json
+https://palavraamiga.com/version.json
 ```
 
-O manifesto é mantido na rota server:
+O manifesto é servido pelo Cloudflare Pages:
 
 ```text
-src/routes/version[.]json.ts
+public/version.json
 ```
 
-Não mantenha `public/version.json` neste projeto enquanto o Lovable estiver servindo a
-rota server. Se o arquivo estático existir, a hospedagem pode servir esse arquivo antes da
-rota e remover headers importantes como CORS.
+O arquivo deve permanecer no repositório institucional, porque `palavraamiga.com` é a URL canônica usada pelo APK e pelo PWA.
 
 O arquivo `public/_headers` também faz parte do contrato. Ele garante que `/version.json`
 continue respondendo com CORS (`Access-Control-Allow-Origin: *`) e `Cache-Control: no-store`
@@ -81,7 +79,7 @@ PalavraAmiga_pwa/docs/VERSIONAMENTO_E_RELEASE.md
 4. Para PWA, atualize `pwa.latestVersion`, `pwa.latestVersionCode`, `pwa.changelog` e `pwa.publishedAt`.
 5. Ajuste `minRequiredVersionCode` ou `forceUpdate` apenas quando for necessário bloquear versões antigas.
 6. Use `maintenance.enabled` e `maintenance.blocking` apenas para manutenção deliberada.
-7. Faça o publish manual no Lovable.
+7. Faça push na branch `main` do site institucional para publicar no Cloudflare Pages.
 8. Confirme HTTP 200, UTF-8 e os headers `Access-Control-Allow-Origin: *` e `Cache-Control: no-store`.
 9. Teste **Ajustes > Sistema > Verificar atualização** em um APK anterior e navegação no PWA instalado.
 
