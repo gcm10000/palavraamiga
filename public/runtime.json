@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-07-14T00:00:00-03:00",
+  "api": {
+    "contractVersion": "v1",
+    "timeoutMs": 8000,
+    "failureCooldownMs": 300000,
+    "endpoints": [
+      {
+        "id": "lightsail-sa-east-1",
+        "baseUrl": "https://api.palavraamiga.com/api",
+        "healthUrl": "https://api.palavraamiga.com/health",
+        "priority": 1,
+        "enabled": true,
+        "region": "sa-east-1",
+        "contractVersion": "v1"
+      }
+    ]
+  }
+}
