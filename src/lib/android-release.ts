@@ -1,4 +1,5 @@
 export const ANDROID_VERSION = "1.0.13";
+export const ANDROID_DOWNLOAD_PATH = "/download/android";
 
 export const APK_DOWNLOAD_URL =
   `https://github.com/gcm10000/palavraamiga-releases/releases/download/v${ANDROID_VERSION}` +

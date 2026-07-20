@@ -1,4 +1,4 @@
-import { APK_DOWNLOAD_URL } from "@/lib/android-release";
+import { ANDROID_DOWNLOAD_PATH } from "@/lib/android-release";
 import { sitePath } from "@/lib/site-links";
 
 const APP_URL = "https://app.palavraamiga.com/";
@@ -24,7 +24,10 @@ export function SiteFooter() {
             <a href={sitePath("/#instalar")} className="text-muted-foreground transition-colors hover:text-foreground">
               Instalar
             </a>
-            <a href={APK_DOWNLOAD_URL} className="text-muted-foreground transition-colors hover:text-foreground">
+            <a
+              href={sitePath(ANDROID_DOWNLOAD_PATH)}
+              className="text-muted-foreground transition-colors hover:text-foreground"
+            >
               Baixar Android
             </a>
             <a href={sitePath("/privacidade")} className="text-muted-foreground transition-colors hover:text-foreground">
