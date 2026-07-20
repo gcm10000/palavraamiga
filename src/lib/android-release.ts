@@ -1,4 +1,4 @@
-export const ANDROID_VERSION = "1.0.14";
+export const ANDROID_VERSION = "1.0.15";
 export const ANDROID_DOWNLOAD_PATH = "/download/android";
 
 export const APK_DOWNLOAD_URL =
