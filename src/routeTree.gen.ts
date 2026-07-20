@@ -14,7 +14,6 @@ import { Route as TermosRouteImport } from './routes/termos'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PrivacidadeRouteImport } from './routes/privacidade'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as DownloadAndroidRouteImport } from './routes/download.android'
 
 const VersionDotjsonRoute = VersionDotjsonRouteImport.update({
   id: '/version.json',
@@ -41,11 +40,6 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DownloadAndroidRoute = DownloadAndroidRouteImport.update({
-  id: '/download/android',
-  path: '/download/android',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -53,7 +47,6 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/termos': typeof TermosRoute
   '/version.json': typeof VersionDotjsonRoute
-  '/download/android': typeof DownloadAndroidRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -61,7 +54,6 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/termos': typeof TermosRoute
   '/version.json': typeof VersionDotjsonRoute
-  '/download/android': typeof DownloadAndroidRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -70,25 +62,12 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/termos': typeof TermosRoute
   '/version.json': typeof VersionDotjsonRoute
-  '/download/android': typeof DownloadAndroidRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/privacidade'
-    | '/sitemap.xml'
-    | '/termos'
-    | '/version.json'
-    | '/download/android'
+  fullPaths: '/' | '/privacidade' | '/sitemap.xml' | '/termos' | '/version.json'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/privacidade'
-    | '/sitemap.xml'
-    | '/termos'
-    | '/version.json'
-    | '/download/android'
+  to: '/' | '/privacidade' | '/sitemap.xml' | '/termos' | '/version.json'
   id:
     | '__root__'
     | '/'
@@ -96,7 +75,6 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/termos'
     | '/version.json'
-    | '/download/android'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -105,7 +83,6 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermosRoute: typeof TermosRoute
   VersionDotjsonRoute: typeof VersionDotjsonRoute
-  DownloadAndroidRoute: typeof DownloadAndroidRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -145,13 +122,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/download/android': {
-      id: '/download/android'
-      path: '/download/android'
-      fullPath: '/download/android'
-      preLoaderRoute: typeof DownloadAndroidRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -161,7 +131,6 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermosRoute: TermosRoute,
   VersionDotjsonRoute: VersionDotjsonRoute,
-  DownloadAndroidRoute: DownloadAndroidRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
