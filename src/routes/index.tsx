@@ -85,6 +85,11 @@ export function Index() {
         <section className="mx-auto max-w-6xl px-5 py-16 md:py-24">
           <div className="grid items-center gap-12 md:grid-cols-2">
             <div>
+              <img
+                src={sitePath("/icon.svg")}
+                alt="Logotipo do Palavra Amiga"
+                className="mb-6 size-20 rounded-[1.4rem] shadow-lg shadow-primary/10"
+              />
               <h1 className="font-serif text-5xl leading-tight text-primary-strong md:text-6xl">
                 Palavra Amiga
               </h1>

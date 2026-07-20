@@ -14,8 +14,13 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-        <a href={sitePath("/")} className="font-serif text-xl text-primary-strong">
-          Palavra Amiga
+        <a
+          href={sitePath("/")}
+          className="flex items-center gap-2.5 font-serif text-xl text-primary-strong"
+          aria-label="Palavra Amiga — início"
+        >
+          <img src={sitePath("/icon.svg")} alt="" className="size-9 rounded-xl shadow-sm" />
+          <span>Palavra Amiga</span>
         </a>
         <nav className="hidden items-center gap-7 md:flex" aria-label="Navegação principal">
           {navLinks.map((l) => (

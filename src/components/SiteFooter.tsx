@@ -10,7 +10,10 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-5 py-12">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           <div className="max-w-xs">
-            <p className="font-serif text-lg text-primary-strong">Palavra Amiga</p>
+            <div className="flex items-center gap-2.5">
+              <img src={sitePath("/icon.svg")} alt="" className="size-10 rounded-xl shadow-sm" />
+              <p className="font-serif text-lg text-primary-strong">Palavra Amiga</p>
+            </div>
             <p className="mt-2 text-sm text-muted-foreground">
               Reflexões curtas para começar bem o dia.
             </p>
