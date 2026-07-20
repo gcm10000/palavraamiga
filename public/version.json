@@ -1,30 +1,30 @@
 {
   "schemaVersion": 2,
   "android": {
-    "latestVersion": "1.0.14",
-    "latestVersionCode": 15,
+    "latestVersion": "1.0.15",
+    "latestVersionCode": 16,
     "minRequiredVersionCode": 5,
-    "apkUrl": "https://github.com/gcm10000/palavraamiga-releases/releases/download/v1.0.14/palavra-amiga-android-v1.0.14.apk",
+    "apkUrl": "https://github.com/gcm10000/palavraamiga-releases/releases/download/v1.0.15/palavra-amiga-android-v1.0.15.apk",
     "storeUrl": "",
     "changelog": [
-      "Logotipo dispon\u00edvel na \u00e1rea autenticada.",
-      "Skeleton de carregamento na Central t\u00e9cnica.",
-      "Download do APK com endere\u00e7o est\u00e1vel e arquivo versionado."
+      "Prefer\u00eancia de vers\u00edculos respeitada desde o onboarding.",
+      "Gesto de puxar para atualizar em Hoje e Hist\u00f3rico.",
+      "Cadastro e carregamento do onboarding aprimorados."
     ],
     "forceUpdate": false,
-    "publishedAt": "2026-07-20T10:20:29-03:00"
+    "publishedAt": "2026-07-20T11:06:51-03:00"
   },
   "pwa": {
-    "latestVersion": "1.0.14",
-    "latestVersionCode": 15,
+    "latestVersion": "1.0.15",
+    "latestVersionCode": 16,
     "minRequiredVersionCode": 1,
     "changelog": [
-      "Logotipo dispon\u00edvel na \u00e1rea autenticada.",
-      "Skeleton de carregamento na Central t\u00e9cnica.",
-      "Melhorias gerais para os testes de produ\u00e7\u00e3o."
+      "Prefer\u00eancia de conte\u00fado respeitada desde o onboarding.",
+      "Gesto de puxar para atualizar em Hoje e Hist\u00f3rico.",
+      "Cadastro e carregamento do onboarding aprimorados."
     ],
     "forceUpdate": false,
-    "publishedAt": "2026-07-20T10:20:29-03:00"
+    "publishedAt": "2026-07-20T11:06:51-03:00"
   },
   "maintenance": {
     "enabled": false,
