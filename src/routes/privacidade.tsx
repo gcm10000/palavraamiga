@@ -25,7 +25,7 @@ export function Privacidade() {
       <SiteHeader />
       <main className="mx-auto max-w-3xl px-5 py-16">
         <h1 className="font-serif text-4xl text-primary-strong">Política de Privacidade</h1>
-        <p className="mt-3 text-sm text-muted-foreground">Atualizada em janeiro de 2026.</p>
+        <p className="mt-3 text-sm text-muted-foreground">Atualizada em julho de 2026.</p>
 
         <div className="mt-10 space-y-8 text-base leading-relaxed text-foreground">
           <section>
@@ -39,9 +39,24 @@ export function Privacidade() {
           <section>
             <h2 className="font-serif text-2xl text-primary-strong">Dados utilizados</h2>
             <p className="mt-3 text-muted-foreground">
-              Utilizamos dados essenciais apenas para o funcionamento da conta, suas
-              preferências (como horário de notificação) e o histórico de reflexões e
-              favoritos. Não vendemos seus dados.
+              Utilizamos nome, sobrenome, e-mail e data de nascimento para manter sua
+              conta, além das suas preferências (como horário de notificação), histórico
+              de reflexões e favoritos. Não vendemos seus dados.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="font-serif text-2xl text-primary-strong">Segurança e auditoria</h2>
+            <p className="mt-3 text-muted-foreground">
+              Registramos o endereço IP, data, horário e informações técnicas da
+              requisição para proteger contas, investigar falhas e auditar cadastros e
+              confirmações de e-mail. O responsável pelo Palavra Amiga recebe alertas
+              internos desses dois eventos com nome, e-mail, IP e horário.
+            </p>
+            <p className="mt-3 text-muted-foreground">
+              Logs técnicos são mantidos por até 14 dias e eventos de auditoria por até
+              90 dias, salvo quando uma obrigação legal ou uma investigação de segurança
+              exigir tratamento diferente.
             </p>
           </section>
 
