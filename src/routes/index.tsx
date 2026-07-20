@@ -14,12 +14,10 @@ import {
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AppPreview } from "@/components/AppPreview";
+import { ANDROID_VERSION, APK_DOWNLOAD_URL } from "@/lib/android-release";
 import { sitePath } from "@/lib/site-links";
 
 const APP_URL = "https://app.palavraamiga.com/";
-const APK_DOWNLOAD_URL =
-  "https://github.com/gcm10000/palavraamiga-releases/releases/latest/download/palavra-amiga-android.apk";
-const ANDROID_VERSION = "1.0.11";
 
 export const Route = createFileRoute("/")({
   component: Index,
