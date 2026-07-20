@@ -1,30 +1,29 @@
 {
   "schemaVersion": 2,
   "android": {
-    "latestVersion": "1.0.11",
-    "latestVersionCode": 12,
+    "latestVersion": "1.0.12",
+    "latestVersionCode": 13,
     "minRequiredVersionCode": 5,
-    "apkUrl": "https://github.com/gcm10000/palavraamiga-releases/releases/download/v1.0.11/palavra-amiga-android-v1.0.11.apk",
+    "apkUrl": "https://github.com/gcm10000/palavraamiga-releases/releases/download/v1.0.12/palavra-amiga-android-v1.0.12.apk",
     "storeUrl": "",
     "changelog": [
-      "Cancela notifica\u00e7\u00f5es locais antigas antes de reagendar a fila di\u00e1ria.",
-      "Troca de conta e mudan\u00e7a de hor\u00e1rio deixam de manter lembretes anteriores.",
-      "A tela Hoje agora mostra somente a reflex\u00e3o da data local atual."
+      "Links de redefini\u00e7\u00e3o de senha agora abrem diretamente no aplicativo.",
+      "A tela de redefini\u00e7\u00e3o mostra qual conta ter\u00e1 a senha alterada.",
+      "A recupera\u00e7\u00e3o de acesso tamb\u00e9m atende contas ainda n\u00e3o confirmadas."
     ],
     "forceUpdate": false,
-    "publishedAt": "2026-07-13T07:45:00-03:00"
+    "publishedAt": "2026-07-19T22:30:12-03:00"
   },
   "pwa": {
-    "latestVersion": "1.0.11",
-    "latestVersionCode": 12,
+    "latestVersion": "1.0.12",
+    "latestVersionCode": 13,
     "minRequiredVersionCode": 1,
     "changelog": [
-      "A tela Hoje agora mostra somente a reflex\u00e3o da data local atual.",
-      "Hist\u00f3rico e Hoje passam a usar regras consistentes de data.",
-      "Ajustes internos reduzem risco de dados antigos aparecerem ap\u00f3s troca de conta."
+      "A tela de redefini\u00e7\u00e3o mostra qual conta ter\u00e1 a senha alterada.",
+      "A recupera\u00e7\u00e3o de acesso tamb\u00e9m atende contas ainda n\u00e3o confirmadas."
     ],
     "forceUpdate": false,
-    "publishedAt": "2026-07-13T07:45:00-03:00"
+    "publishedAt": "2026-07-19T22:30:12-03:00"
   },
   "maintenance": {
     "enabled": false,
