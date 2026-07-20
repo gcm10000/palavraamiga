@@ -1,7 +1,7 @@
 import { access, copyFile, mkdir } from "node:fs/promises";
 
 const source = "dist-pages/index.static.html";
-const routes = ["privacidade", "termos"];
+const routes = ["privacidade", "termos", "convite/sabedoria"];
 
 await access(source);
 await copyFile(source, "dist-pages/index.html");

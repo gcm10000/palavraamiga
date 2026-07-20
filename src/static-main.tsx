@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { Index } from "./routes/index";
 import { Privacidade } from "./routes/privacidade";
 import { Termos } from "./routes/termos";
+import { CampaignLanding } from "./components/CampaignLanding";
 import "./styles.css";
 
 function StaticApp() {
@@ -10,6 +11,9 @@ function StaticApp() {
 
   if (route === "/privacidade") return <Privacidade />;
   if (route === "/termos") return <Termos />;
+  if (route.startsWith("/convite/")) {
+    return <CampaignLanding code={route.slice("/convite/".length)} />;
+  }
   return <Index />;
 }
 
