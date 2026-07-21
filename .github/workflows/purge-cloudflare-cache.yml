@@ -1,0 +1,94 @@
+name: Purge production cache after Pages deploy
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-pages-cache-purge-production
+  cancel-in-progress: false
+
+jobs:
+  purge:
+    name: Purge Palavra Amiga CDN cache
+    runs-on: ubuntu-latest
+    # Pages stays deployed by Cloudflare's Git integration. This job waits for
+    # the exact commit to be live before purging the production zone.
+    env:
+      CLOUDFLARE_ACCOUNT_ID: b15a7aabe090558d3c8d59dece0caa16
+      CLOUDFLARE_PAGES_PROJECT: palavra-amiga-site
+      CLOUDFLARE_ZONE_ID: ${{ vars.CLOUDFLARE_ZONE_ID }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_CACHE_PURGE_TOKEN }}
+      DEPLOYMENT_SHA: ${{ github.sha }}
+    steps:
+      - name: Check cache-purge configuration
+        id: config
+        shell: bash
+        run: |
+          if [[ -z "$CLOUDFLARE_API_TOKEN" || -z "$CLOUDFLARE_ZONE_ID" ]]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Cache purge skipped. Set CLOUDFLARE_CACHE_PURGE_TOKEN and CLOUDFLARE_ZONE_ID to enable it."
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Wait for the matching Pages deployment
+        if: steps.config.outputs.configured == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          deployments_url="https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/pages/projects/${CLOUDFLARE_PAGES_PROJECT}/deployments?env=production&per_page=20"
+
+          for attempt in $(seq 1 40); do
+            response="$(curl --fail-with-body --silent --show-error \
+              --header "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+              "$deployments_url")"
+
+            deployment="$(jq --compact-output --arg sha "$DEPLOYMENT_SHA" \
+              '.result[] | select(.deployment_trigger.metadata.commit_hash == $sha) | .' \
+              <<<"$response" | head -n 1)"
+
+            if [[ -n "$deployment" ]]; then
+              status="$(jq --raw-output '.latest_stage.status' <<<"$deployment")"
+
+              case "$status" in
+                success)
+                  echo "Pages deployment for ${DEPLOYMENT_SHA} completed successfully."
+                  exit 0
+                  ;;
+                failure|canceled)
+                  echo "Pages deployment for ${DEPLOYMENT_SHA} ended with status: ${status}." >&2
+                  exit 1
+                  ;;
+                *)
+                  echo "Pages deployment found with status: ${status}. Waiting..."
+                  ;;
+              esac
+            else
+              echo "Pages deployment for ${DEPLOYMENT_SHA} has not appeared yet. Waiting..."
+            fi
+
+            sleep 15
+          done
+
+          echo "Timed out waiting for the Pages deployment for ${DEPLOYMENT_SHA}." >&2
+          exit 1
+
+      - name: Purge the production zone cache
+        if: steps.config.outputs.configured == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          curl --fail-with-body --silent --show-error \
+            --request POST \
+            --header "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+            --header "Content-Type: application/json" \
+            --data '{"purge_everything":true}' \
+            "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE_ID}/purge_cache"
+
+          echo "Cloudflare CDN cache purged after the production deployment."
