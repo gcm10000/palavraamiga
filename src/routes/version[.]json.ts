@@ -4,11 +4,11 @@ import type {} from "@tanstack/react-start";
 const versionInfo = {
   schemaVersion: 2,
   android: {
-    latestVersion: "1.0.17",
-    latestVersionCode: 18,
+    latestVersion: "1.0.18",
+    latestVersionCode: 19,
     minRequiredVersionCode: 5,
     apkUrl:
-      "https://github.com/gcm10000/palavraamiga-releases/releases/download/v1.0.17/palavra-amiga-android-v1.0.17.apk",
+      "https://github.com/gcm10000/palavraamiga-releases/releases/download/v1.0.18/palavra-amiga-android-v1.0.18.apk",
     storeUrl: "",
     changelog: [
       "Escolha entre abrir o aplicativo, seguir pelo navegador ou baixar o APK ao entrar em um convite.",
@@ -16,11 +16,11 @@ const versionInfo = {
       "Fallback seguro para o PWA quando o aplicativo ainda não estiver instalado.",
     ],
     forceUpdate: false,
-    publishedAt: "2026-07-20T17:00:00-03:00",
+    publishedAt: "2026-07-21T00:28:00-03:00",
   },
   pwa: {
-    latestVersion: "1.0.17",
-    latestVersionCode: 18,
+    latestVersion: "1.0.18",
+    latestVersionCode: 19,
     minRequiredVersionCode: 1,
     changelog: [
       "Escolha entre abrir o aplicativo, seguir pelo navegador ou baixar o APK ao entrar em um convite.",
@@ -28,7 +28,7 @@ const versionInfo = {
       "Fallback seguro para o PWA quando o aplicativo ainda não estiver instalado.",
     ],
     forceUpdate: false,
-    publishedAt: "2026-07-20T17:00:00-03:00",
+    publishedAt: "2026-07-21T00:28:00-03:00",
   },
   maintenance: {
     enabled: false,

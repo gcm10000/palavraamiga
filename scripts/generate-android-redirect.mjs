@@ -22,6 +22,9 @@ if (manifest.android?.latestVersion !== version) {
 const apkUrl =
   `https://github.com/gcm10000/palavraamiga-releases/releases/download/v${version}` +
   `/palavra-amiga-android-v${version}.apk`;
+const wisdomCampaignApkUrl =
+  `https://github.com/gcm10000/palavraamiga-releases/releases/download/v${version}` +
+  `/palavra-amiga-android-sabedoria-v${version}.apk`;
 
 if (manifest.android?.apkUrl !== apkUrl) {
   throw new Error(`apkUrl divergente em version.json. Esperado: ${apkUrl}`);
@@ -29,7 +32,8 @@ if (manifest.android?.apkUrl !== apkUrl) {
 
 await writeFile(
   resolve(root, "public/_redirects"),
-  `/download/android ${apkUrl} 302\n`,
+  `/download/android ${apkUrl} 302\n` +
+    `/download/android/sabedoria ${wisdomCampaignApkUrl} 302\n`,
   "utf8",
 );
 

@@ -1,7 +1,7 @@
-import { ArrowRight, BookOpen, CalendarDays, CheckCircle2, Download, LoaderCircle, Sparkles, X } from "lucide-react";
+import { ArrowRight, BookOpen, CalendarDays, Download, LoaderCircle, Sparkles, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { SiteFooter } from "@/components/SiteFooter";
-import { ANDROID_DOWNLOAD_PATH } from "@/lib/android-release";
+import { WISDOM_CAMPAIGN_DOWNLOAD_PATH } from "@/lib/android-release";
 import { getCampaignPage } from "@/lib/campaigns";
 import { sitePath } from "@/lib/site-links";
 
@@ -123,6 +123,7 @@ export function CampaignLanding({ code }: { code: string }) {
       {showChoice && (
         <CampaignDestinationChoice
           appUrl={signupUrl}
+          nativeUrl={nativeUrl}
           onClose={() => setShowChoice(false)}
         />
       )}
@@ -148,9 +149,11 @@ function Feature({
 
 function CampaignDestinationChoice({
   appUrl,
+  nativeUrl,
   onClose,
 }: {
   appUrl: string;
+  nativeUrl: string;
   onClose: () => void;
 }) {
   const [downloadStarted, setDownloadStarted] = useState(false);
@@ -210,8 +213,12 @@ function CampaignDestinationChoice({
           </a>
 
           <a
-            href={ANDROID_DOWNLOAD_PATH}
-            onClick={() => setDownloadStarted(true)}
+            href={downloadStarted ? nativeUrl : WISDOM_CAMPAIGN_DOWNLOAD_PATH}
+            target={downloadStarted ? undefined : "_blank"}
+            rel={downloadStarted ? undefined : "noopener noreferrer"}
+            onClick={() => {
+              if (!downloadStarted) setDownloadStarted(true);
+            }}
             className={`flex w-full cursor-pointer items-center gap-4 rounded-2xl border p-4 text-left transition active:scale-[0.99] ${
               downloadStarted
                 ? "border-primary/40 bg-accent/70"
@@ -219,15 +226,15 @@ function CampaignDestinationChoice({
             }`}
           >
             <span className="flex size-11 items-center justify-center rounded-xl bg-accent text-primary-strong">
-              {downloadStarted ? <CheckCircle2 className="size-5" /> : <Download className="size-5" />}
+              {downloadStarted ? <ArrowRight className="size-5" /> : <Download className="size-5" />}
             </span>
             <span className="flex-1" aria-live="polite">
               <span className="block text-sm font-semibold text-foreground">
-                {downloadStarted ? "Download iniciado" : "Baixar aplicativo Android"}
+                {downloadStarted ? "Instalei — abrir meu convite" : "Baixar aplicativo Android"}
               </span>
               <span className="mt-0.5 block text-xs leading-relaxed text-muted-foreground">
                 {downloadStarted
-                  ? "Acompanhe o download nas notificações do aparelho."
+                  ? "Depois de instalar, volte aqui para continuar com a campanha no aplicativo."
                   : "Baixar o APK e depois voltar a este convite."}
               </span>
             </span>
