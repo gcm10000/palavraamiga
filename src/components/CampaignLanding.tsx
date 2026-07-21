@@ -1,5 +1,7 @@
-import { ArrowRight, BookOpen, CalendarDays, Sparkles } from "lucide-react";
+import { ArrowRight, BookOpen, CalendarDays, Download, ExternalLink, Smartphone, Sparkles, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import { SiteFooter } from "@/components/SiteFooter";
+import { ANDROID_DOWNLOAD_PATH } from "@/lib/android-release";
 import { getCampaignPage } from "@/lib/campaigns";
 import { sitePath } from "@/lib/site-links";
 
@@ -8,6 +10,7 @@ const API_URL = "https://api.palavraamiga.com/api";
 
 export function CampaignLanding({ code }: { code: string }) {
   const campaign = getCampaignPage(code);
+  const [showChoice, setShowChoice] = useState(false);
 
   if (!campaign) {
     return (
@@ -51,13 +54,14 @@ export function CampaignLanding({ code }: { code: string }) {
             <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
               {campaign.description}
             </p>
-            <a
-              href={signupUrl}
+            <button
+              type="button"
+              onClick={() => setShowChoice(true)}
               className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary-strong px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/15 transition hover:-translate-y-0.5 hover:bg-primary"
             >
               Começar meu convite
               <ArrowRight className="size-4" />
-            </a>
+            </button>
             <p className="mt-3 text-xs text-muted-foreground">
               Gratuito nesta fase inicial. Você escolhe o tipo de conteúdo e o horário.
             </p>
@@ -84,6 +88,13 @@ export function CampaignLanding({ code }: { code: string }) {
           </div>
         </section>
       </main>
+      {showChoice && (
+        <CampaignDestinationChoice
+          appUrl={signupUrl}
+          code={campaign.code}
+          onClose={() => setShowChoice(false)}
+        />
+      )}
       <SiteFooter />
     </div>
   );
@@ -100,6 +111,112 @@ function Feature({
     <div className="flex items-center gap-3 rounded-xl border border-border bg-background/70 p-3">
       <Icon className="size-4 shrink-0 text-primary" />
       <span className="text-xs text-muted-foreground">{text}</span>
+    </div>
+  );
+}
+
+function CampaignDestinationChoice({
+  appUrl,
+  code,
+  onClose,
+}: {
+  appUrl: string;
+  code: string;
+  onClose: () => void;
+}) {
+  const nativeUrl = `app.palavramiga.mobile://campaign?convite=${encodeURIComponent(code)}`;
+
+  function openInstalledApp() {
+    const startedAt = Date.now();
+    window.location.href = nativeUrl;
+    window.setTimeout(() => {
+      if (document.visibilityState === "visible" && Date.now() - startedAt >= 1200) {
+        window.location.href = appUrl;
+      }
+    }, 1400);
+  }
+
+  useEffect(() => {
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") onClose();
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [onClose]);
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-end bg-foreground/35 p-4 sm:items-center sm:justify-center"
+      role="presentation"
+      onMouseDown={onClose}
+    >
+      <section
+        className="w-full max-w-md rounded-[2rem] border border-border bg-card p-6 shadow-2xl"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="campaign-destination-title"
+        onMouseDown={(event) => event.stopPropagation()}
+      >
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[.18em] text-primary">Seu convite</p>
+            <h2 id="campaign-destination-title" className="mt-2 font-serif text-2xl text-foreground">
+              Como deseja continuar?
+            </h2>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Fechar"
+            className="rounded-full p-2 text-muted-foreground hover:bg-accent hover:text-foreground"
+          >
+            <X className="size-5" />
+          </button>
+        </div>
+
+        <div className="mt-6 space-y-3">
+          <button
+            type="button"
+            onClick={openInstalledApp}
+            className="flex w-full items-center gap-4 rounded-2xl border border-primary/30 bg-primary/5 p-4 text-left transition hover:bg-primary/10"
+          >
+            <span className="flex size-11 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+              <Smartphone className="size-5" />
+            </span>
+            <span className="flex-1">
+              <span className="block text-sm font-semibold text-foreground">Abrir no aplicativo</span>
+              <span className="mt-0.5 block text-xs leading-relaxed text-muted-foreground">
+                Se ele estiver instalado, seu convite continuará direto nele.
+              </span>
+            </span>
+            <ExternalLink className="size-4 text-primary" />
+          </button>
+
+          <a href={appUrl} className="flex w-full items-center gap-4 rounded-2xl border border-border p-4 text-left transition hover:bg-accent/60">
+            <span className="flex size-11 items-center justify-center rounded-xl bg-accent text-primary-strong">
+              <ArrowRight className="size-5" />
+            </span>
+            <span className="flex-1">
+              <span className="block text-sm font-semibold text-foreground">Seguir pelo navegador</span>
+              <span className="mt-0.5 block text-xs leading-relaxed text-muted-foreground">
+                Abrir o Palavra Amiga como PWA, sem instalar nada.
+              </span>
+            </span>
+          </a>
+
+          <a href={sitePath(ANDROID_DOWNLOAD_PATH)} className="flex w-full items-center gap-4 rounded-2xl border border-border p-4 text-left transition hover:bg-accent/60">
+            <span className="flex size-11 items-center justify-center rounded-xl bg-accent text-primary-strong">
+              <Download className="size-5" />
+            </span>
+            <span className="flex-1">
+              <span className="block text-sm font-semibold text-foreground">Baixar aplicativo Android</span>
+              <span className="mt-0.5 block text-xs leading-relaxed text-muted-foreground">
+                Baixar o APK e depois voltar a este convite.
+              </span>
+            </span>
+          </a>
+        </div>
+      </section>
     </div>
   );
 }
