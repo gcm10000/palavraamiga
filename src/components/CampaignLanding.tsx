@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpen, CalendarDays, Download, Sparkles, X } from "lucide-react";
+import { ArrowRight, BookOpen, CalendarDays, CheckCircle2, Download, LoaderCircle, Sparkles, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ANDROID_DOWNLOAD_PATH } from "@/lib/android-release";
@@ -11,6 +11,16 @@ const API_URL = "https://api.palavraamiga.com/api";
 export function CampaignLanding({ code }: { code: string }) {
   const campaign = getCampaignPage(code);
   const [showChoice, setShowChoice] = useState(false);
+  const [isOpeningApp, setIsOpeningApp] = useState(false);
+
+  useEffect(() => {
+    function resetOpeningState() {
+      if (document.visibilityState === "visible") setIsOpeningApp(false);
+    }
+
+    document.addEventListener("visibilitychange", resetOpeningState);
+    return () => document.removeEventListener("visibilitychange", resetOpeningState);
+  }, []);
 
   if (!campaign) {
     return (
@@ -30,6 +40,8 @@ export function CampaignLanding({ code }: { code: string }) {
   void trackOpen(campaign.code);
 
   function continueInvite() {
+    setIsOpeningApp(true);
+
     if (!/Android/i.test(navigator.userAgent)) {
       window.location.href = signupUrl;
       return;
@@ -40,6 +52,7 @@ export function CampaignLanding({ code }: { code: string }) {
 
     window.setTimeout(() => {
       if (document.visibilityState === "visible" && Date.now() - startedAt >= 1200) {
+        setIsOpeningApp(false);
         setShowChoice(true);
       }
     }, 1400);
@@ -74,10 +87,12 @@ export function CampaignLanding({ code }: { code: string }) {
             <button
               type="button"
               onClick={continueInvite}
-              className="mt-8 inline-flex cursor-pointer items-center gap-2 rounded-full bg-primary-strong px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/15 transition hover:-translate-y-0.5 hover:bg-primary"
+              disabled={isOpeningApp}
+              aria-live="polite"
+              className="mt-8 inline-flex cursor-pointer items-center gap-2 rounded-full bg-primary-strong px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/15 transition hover:-translate-y-0.5 hover:bg-primary disabled:cursor-wait disabled:opacity-80 disabled:hover:translate-y-0"
             >
-              Começar meu convite
-              <ArrowRight className="size-4" />
+              {isOpeningApp ? "Abrindo aplicativo..." : "Começar meu convite"}
+              {isOpeningApp ? <LoaderCircle className="size-4 animate-spin" /> : <ArrowRight className="size-4" />}
             </button>
             <p className="mt-3 text-xs text-muted-foreground">
               Sempre gratuito. Você escolhe o tipo de conteúdo e o horário.
@@ -138,6 +153,8 @@ function CampaignDestinationChoice({
   appUrl: string;
   onClose: () => void;
 }) {
+  const [downloadStarted, setDownloadStarted] = useState(false);
+
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") onClose();
@@ -192,14 +209,26 @@ function CampaignDestinationChoice({
             </span>
           </a>
 
-          <a href={ANDROID_DOWNLOAD_PATH} className="flex w-full items-center gap-4 rounded-2xl border border-border p-4 text-left transition hover:bg-accent/60">
+          <a
+            href={ANDROID_DOWNLOAD_PATH}
+            onClick={() => setDownloadStarted(true)}
+            className={`flex w-full cursor-pointer items-center gap-4 rounded-2xl border p-4 text-left transition active:scale-[0.99] ${
+              downloadStarted
+                ? "border-primary/40 bg-accent/70"
+                : "border-border hover:bg-accent/60"
+            }`}
+          >
             <span className="flex size-11 items-center justify-center rounded-xl bg-accent text-primary-strong">
-              <Download className="size-5" />
+              {downloadStarted ? <CheckCircle2 className="size-5" /> : <Download className="size-5" />}
             </span>
-            <span className="flex-1">
-              <span className="block text-sm font-semibold text-foreground">Baixar aplicativo Android</span>
+            <span className="flex-1" aria-live="polite">
+              <span className="block text-sm font-semibold text-foreground">
+                {downloadStarted ? "Download iniciado" : "Baixar aplicativo Android"}
+              </span>
               <span className="mt-0.5 block text-xs leading-relaxed text-muted-foreground">
-                Baixar o APK e depois voltar a este convite.
+                {downloadStarted
+                  ? "Acompanhe o download nas notificações do aparelho."
+                  : "Baixar o APK e depois voltar a este convite."}
               </span>
             </span>
           </a>
