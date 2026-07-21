@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "node scripts/generate-android-redirect.mjs && vite build",
-    "build:pages": "vite build --config vite.pages.config.ts && node scripts/prepare-pages.mjs",
+    "build:pages": "node scripts/generate-android-redirect.mjs && vite build --config vite.pages.config.ts && node scripts/prepare-pages.mjs",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
