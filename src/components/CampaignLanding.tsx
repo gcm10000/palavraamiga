@@ -57,7 +57,7 @@ export function CampaignLanding({ code }: { code: string }) {
             <button
               type="button"
               onClick={() => setShowChoice(true)}
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary-strong px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/15 transition hover:-translate-y-0.5 hover:bg-primary"
+              className="mt-8 inline-flex cursor-pointer items-center gap-2 rounded-full bg-primary-strong px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/15 transition hover:-translate-y-0.5 hover:bg-primary"
             >
               Começar meu convite
               <ArrowRight className="size-4" />
@@ -199,7 +199,7 @@ function CampaignDestinationChoice({
             <span className="flex-1">
               <span className="block text-sm font-semibold text-foreground">Seguir pelo navegador</span>
               <span className="mt-0.5 block text-xs leading-relaxed text-muted-foreground">
-                Abrir o Palavra Amiga como PWA, sem instalar nada.
+                Continue seu convite aqui mesmo, pelo navegador.
               </span>
             </span>
           </a>
