@@ -13,10 +13,10 @@ const campaigns: Record<string, CampaignPage> = {
     code: "sabedoria",
     eyebrow: "Um convite pensado para você",
     title: "Sete dias de sabedoria para começar bem",
-    subtitle: "Provérbios e Eclesiastes, uma reflexão por dia.",
+    subtitle: "Provérbios, Eclesiastes e Salmos, uma reflexão por dia.",
     description:
       "Comece com mensagens breves sobre escolhas, tempo, coragem e o que realmente importa. Depois, o Palavra Amiga continua respeitando as preferências que você escolher.",
-    books: ["Provérbios", "Eclesiastes"],
+    books: ["Provérbios", "Eclesiastes", "Salmos"],
     days: 7,
   },
 };
