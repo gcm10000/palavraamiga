@@ -1,30 +1,30 @@
 {
   "schemaVersion": 2,
   "android": {
-    "latestVersion": "1.0.19",
-    "latestVersionCode": 20,
+    "latestVersion": "1.0.20",
+    "latestVersionCode": 21,
     "minRequiredVersionCode": 5,
-    "apkUrl": "https://github.com/gcm10000/palavraamiga-releases/releases/download/v1.0.19/palavra-amiga-android-v1.0.19.apk",
+    "apkUrl": "https://github.com/gcm10000/palavraamiga-releases/releases/download/v1.0.20/palavra-amiga-android-v1.0.20.apk",
     "storeUrl": "",
     "changelog": [
-      "Orientação mais clara para localizar a confirmação de e-mail.",
-      "Lembrete para verificar Spam e Lixo Eletrônico.",
-      "Fluxo de confirmação alinhado entre aplicativo e navegador."
+      "Notificações ativadas por padrão durante os primeiros ajustes.",
+      "Onboarding mais simples, sem uma escolha redundante.",
+      "A permissão do Android continua respeitada."
     ],
     "forceUpdate": false,
-    "publishedAt": "2026-07-21T08:13:46-03:00"
+    "publishedAt": "2026-07-21T08:23:44-03:00"
   },
   "pwa": {
-    "latestVersion": "1.0.19",
-    "latestVersionCode": 20,
+    "latestVersion": "1.0.20",
+    "latestVersionCode": 21,
     "minRequiredVersionCode": 1,
     "changelog": [
-      "Orientação mais clara para localizar a confirmação de e-mail.",
-      "Lembrete para verificar Spam e Lixo Eletrônico.",
-      "Fluxo de confirmação alinhado entre aplicativo e navegador."
+      "Notificações ativadas por padrão durante os primeiros ajustes.",
+      "Onboarding mais simples, sem uma escolha redundante.",
+      "A permissão do Android continua respeitada."
     ],
     "forceUpdate": false,
-    "publishedAt": "2026-07-21T08:13:46-03:00"
+    "publishedAt": "2026-07-21T08:23:44-03:00"
   },
   "maintenance": {
     "enabled": false,

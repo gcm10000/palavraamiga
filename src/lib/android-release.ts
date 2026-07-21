@@ -1,4 +1,4 @@
-export const ANDROID_VERSION = "1.0.19";
+export const ANDROID_VERSION = "1.0.20";
 export const ANDROID_DOWNLOAD_PATH = "/download/android";
 export const WISDOM_CAMPAIGN_DOWNLOAD_PATH = "/download/android/sabedoria";
 
