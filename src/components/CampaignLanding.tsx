@@ -20,8 +20,11 @@ export function CampaignLanding({ code }: { code: string }) {
   const campaign = getCampaignPage(code);
   const [showChoice, setShowChoice] = useState(false);
   const [isOpeningApp, setIsOpeningApp] = useState(false);
+  const [isAndroidDevice, setIsAndroidDevice] = useState(false);
 
   useEffect(() => {
+    setIsAndroidDevice(/Android/i.test(navigator.userAgent));
+
     function resetOpeningState() {
       if (document.visibilityState === "visible") setIsOpeningApp(false);
     }
@@ -97,9 +100,13 @@ export function CampaignLanding({ code }: { code: string }) {
               onClick={continueInvite}
               disabled={isOpeningApp}
               aria-live="polite"
-              className="mt-8 inline-flex cursor-pointer items-center gap-2 rounded-full bg-primary-strong px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/15 transition hover:-translate-y-0.5 hover:bg-primary disabled:cursor-wait disabled:opacity-80 disabled:hover:translate-y-0"
+              className="mt-8 inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-primary-strong px-7 py-4 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 ring-4 ring-primary/10 transition hover:-translate-y-0.5 hover:bg-primary disabled:cursor-wait disabled:opacity-80 disabled:hover:translate-y-0 sm:w-auto"
             >
-              {isOpeningApp ? "Abrindo aplicativo..." : "Começar meu convite"}
+              {isOpeningApp
+                ? "Preparando seu acesso..."
+                : isAndroidDevice
+                  ? "Baixar agora"
+                  : "Acessar agora"}
               {isOpeningApp ? (
                 <LoaderCircle className="size-4 animate-spin" />
               ) : (
@@ -107,7 +114,9 @@ export function CampaignLanding({ code }: { code: string }) {
               )}
             </button>
             <p className="mt-3 text-xs text-muted-foreground">
-              Sempre gratuito. Você escolhe o tipo de conteúdo e o horário.
+              {isAndroidDevice
+                ? "Se você já tiver o aplicativo, ele será aberto automaticamente. É gratuito."
+                : "Continue agora mesmo pelo navegador. É gratuito."}
             </p>
           </div>
 
