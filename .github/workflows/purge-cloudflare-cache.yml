@@ -3,6 +3,7 @@ name: Purge production cache after Pages deploy
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
