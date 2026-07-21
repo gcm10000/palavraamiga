@@ -63,7 +63,7 @@ export function CampaignLanding({ code }: { code: string }) {
               <ArrowRight className="size-4" />
             </button>
             <p className="mt-3 text-xs text-muted-foreground">
-              Gratuito nesta fase inicial. Você escolhe o tipo de conteúdo e o horário.
+              Sempre gratuito. Você escolhe o tipo de conteúdo e o horário.
             </p>
           </div>
 
@@ -77,9 +77,9 @@ export function CampaignLanding({ code }: { code: string }) {
                 <Sparkles className="size-5 text-primary" />
               </div>
               <p className="mt-10 font-serif text-3xl leading-snug text-foreground">
-                “Sobre tudo o que se deve guardar, guarda o coração.”
+                “Este é o dia que o Senhor fez; regozijemo-nos e alegremo-nos nele.”
               </p>
-              <p className="mt-5 text-sm text-muted-foreground">Provérbios 4:23</p>
+              <p className="mt-5 text-sm text-muted-foreground">Salmos 118:24</p>
               <div className="mt-10 grid gap-3 sm:grid-cols-2">
                 <Feature icon={BookOpen} text={campaign.books.join(" e ")} />
                 <Feature icon={CalendarDays} text={`${campaign.days} primeiros dias`} />
