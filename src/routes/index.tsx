@@ -14,7 +14,7 @@ import {
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AppPreview } from "@/components/AppPreview";
-import { ANDROID_DOWNLOAD_PATH, ANDROID_VERSION } from "@/lib/android-release";
+import { ANDROID_VERSION, APK_DOWNLOAD_URL } from "@/lib/android-release";
 import { sitePath } from "@/lib/site-links";
 
 const APP_URL = "https://app.palavraamiga.com/";
@@ -106,7 +106,7 @@ export function Index() {
                   Abrir app
                 </a>
                 <a
-                  href={sitePath(ANDROID_DOWNLOAD_PATH)}
+                  href={APK_DOWNLOAD_URL}
                   className="rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-primary-strong transition-colors hover:bg-accent"
                 >
                   Baixar Android
@@ -176,7 +176,7 @@ export function Index() {
                 Abrir app
               </a>
               <a
-                href={sitePath(ANDROID_DOWNLOAD_PATH)}
+                href={APK_DOWNLOAD_URL}
                 className="rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-primary-strong transition-colors hover:bg-accent"
               >
                 Baixar APK Android
@@ -217,7 +217,7 @@ export function Index() {
                 distribuída manualmente enquanto a Google Play fica para uma etapa futura.
               </p>
               <a
-                href={sitePath(ANDROID_DOWNLOAD_PATH)}
+                href={APK_DOWNLOAD_URL}
                 className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary-strong px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary"
               >
                 <Download className="size-4" />

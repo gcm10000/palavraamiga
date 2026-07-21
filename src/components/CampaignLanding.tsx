@@ -1,7 +1,7 @@
 import { ArrowRight, BookOpen, CalendarDays, Download, ExternalLink, Smartphone, Sparkles, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { SiteFooter } from "@/components/SiteFooter";
-import { ANDROID_DOWNLOAD_PATH } from "@/lib/android-release";
+import { APK_DOWNLOAD_URL } from "@/lib/android-release";
 import { getCampaignPage } from "@/lib/campaigns";
 import { sitePath } from "@/lib/site-links";
 
@@ -204,7 +204,7 @@ function CampaignDestinationChoice({
             </span>
           </a>
 
-          <a href={sitePath(ANDROID_DOWNLOAD_PATH)} className="flex w-full items-center gap-4 rounded-2xl border border-border p-4 text-left transition hover:bg-accent/60">
+          <a href={APK_DOWNLOAD_URL} className="flex w-full items-center gap-4 rounded-2xl border border-border p-4 text-left transition hover:bg-accent/60">
             <span className="flex size-11 items-center justify-center rounded-xl bg-accent text-primary-strong">
               <Download className="size-5" />
             </span>
