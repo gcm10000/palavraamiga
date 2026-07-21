@@ -1,4 +1,12 @@
-import { ArrowRight, BookOpen, CalendarDays, Download, LoaderCircle, Sparkles, X } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  CalendarDays,
+  Download,
+  LoaderCircle,
+  Sparkles,
+  X,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 import { SiteFooter } from "@/components/SiteFooter";
 import { WISDOM_CAMPAIGN_DOWNLOAD_PATH } from "@/lib/android-release";
@@ -92,7 +100,11 @@ export function CampaignLanding({ code }: { code: string }) {
               className="mt-8 inline-flex cursor-pointer items-center gap-2 rounded-full bg-primary-strong px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/15 transition hover:-translate-y-0.5 hover:bg-primary disabled:cursor-wait disabled:opacity-80 disabled:hover:translate-y-0"
             >
               {isOpeningApp ? "Abrindo aplicativo..." : "Começar meu convite"}
-              {isOpeningApp ? <LoaderCircle className="size-4 animate-spin" /> : <ArrowRight className="size-4" />}
+              {isOpeningApp ? (
+                <LoaderCircle className="size-4 animate-spin" />
+              ) : (
+                <ArrowRight className="size-4" />
+              )}
             </button>
             <p className="mt-3 text-xs text-muted-foreground">
               Sempre gratuito. Você escolhe o tipo de conteúdo e o horário.
@@ -121,24 +133,14 @@ export function CampaignLanding({ code }: { code: string }) {
         </section>
       </main>
       {showChoice && (
-        <CampaignDestinationChoice
-          appUrl={signupUrl}
-          nativeUrl={nativeUrl}
-          onClose={() => setShowChoice(false)}
-        />
+        <CampaignDestinationChoice appUrl={signupUrl} onClose={() => setShowChoice(false)} />
       )}
       <SiteFooter />
     </div>
   );
 }
 
-function Feature({
-  icon: Icon,
-  text,
-}: {
-  icon: typeof BookOpen;
-  text: string;
-}) {
+function Feature({ icon: Icon, text }: { icon: typeof BookOpen; text: string }) {
   return (
     <div className="flex items-center gap-3 rounded-xl border border-border bg-background/70 p-3">
       <Icon className="size-4 shrink-0 text-primary" />
@@ -147,16 +149,8 @@ function Feature({
   );
 }
 
-function CampaignDestinationChoice({
-  appUrl,
-  nativeUrl,
-  onClose,
-}: {
-  appUrl: string;
-  nativeUrl: string;
-  onClose: () => void;
-}) {
-  const [downloadStarted, setDownloadStarted] = useState(false);
+function CampaignDestinationChoice({ appUrl, onClose }: { appUrl: string; onClose: () => void }) {
+  const [downloadState, setDownloadState] = useState<"idle" | "starting" | "requested">("idle");
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -165,6 +159,19 @@ function CampaignDestinationChoice({
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [onClose]);
+
+  function downloadAndroidApp() {
+    if (downloadState === "starting") return;
+
+    setDownloadState("starting");
+
+    // A navegação na mesma guia é aceita de forma mais consistente pelos
+    // navegadores Android do que abrir uma nova guia para iniciar um APK.
+    window.setTimeout(() => {
+      window.location.assign(WISDOM_CAMPAIGN_DOWNLOAD_PATH);
+      window.setTimeout(() => setDownloadState("requested"), 1800);
+    }, 75);
+  }
 
   return (
     <div
@@ -181,8 +188,13 @@ function CampaignDestinationChoice({
       >
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[.18em] text-primary">Seu convite</p>
-            <h2 id="campaign-destination-title" className="mt-2 font-serif text-2xl text-foreground">
+            <p className="text-xs font-semibold uppercase tracking-[.18em] text-primary">
+              Seu convite
+            </p>
+            <h2
+              id="campaign-destination-title"
+              className="mt-2 font-serif text-2xl text-foreground"
+            >
               Como deseja continuar?
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -200,45 +212,51 @@ function CampaignDestinationChoice({
         </div>
 
         <div className="mt-6 space-y-3">
-          <a href={appUrl} className="flex w-full items-center gap-4 rounded-2xl border border-border p-4 text-left transition hover:bg-accent/60">
+          <a
+            href={appUrl}
+            className="flex w-full items-center gap-4 rounded-2xl border border-border p-4 text-left transition hover:bg-accent/60"
+          >
             <span className="flex size-11 items-center justify-center rounded-xl bg-accent text-primary-strong">
               <ArrowRight className="size-5" />
             </span>
             <span className="flex-1">
-              <span className="block text-sm font-semibold text-foreground">Seguir pelo navegador</span>
+              <span className="block text-sm font-semibold text-foreground">
+                Seguir pelo navegador
+              </span>
               <span className="mt-0.5 block text-xs leading-relaxed text-muted-foreground">
                 Continue seu convite aqui mesmo, pelo navegador.
               </span>
             </span>
           </a>
 
-          <a
-            href={downloadStarted ? nativeUrl : WISDOM_CAMPAIGN_DOWNLOAD_PATH}
-            target={downloadStarted ? undefined : "_blank"}
-            rel={downloadStarted ? undefined : "noopener noreferrer"}
-            onClick={() => {
-              if (!downloadStarted) setDownloadStarted(true);
-            }}
-            className={`flex w-full cursor-pointer items-center gap-4 rounded-2xl border p-4 text-left transition active:scale-[0.99] ${
-              downloadStarted
-                ? "border-primary/40 bg-accent/70"
-                : "border-border hover:bg-accent/60"
-            }`}
+          <button
+            type="button"
+            onClick={downloadAndroidApp}
+            disabled={downloadState === "starting"}
+            className="flex w-full cursor-pointer items-center gap-4 rounded-2xl border border-border p-4 text-left transition hover:bg-accent/60 active:scale-[0.99] disabled:cursor-wait disabled:opacity-80"
           >
             <span className="flex size-11 items-center justify-center rounded-xl bg-accent text-primary-strong">
-              {downloadStarted ? <ArrowRight className="size-5" /> : <Download className="size-5" />}
+              {downloadState === "starting" ? (
+                <LoaderCircle className="size-5 animate-spin" />
+              ) : (
+                <Download className="size-5" />
+              )}
             </span>
             <span className="flex-1" aria-live="polite">
               <span className="block text-sm font-semibold text-foreground">
-                {downloadStarted ? "Instalei — abrir meu convite" : "Baixar aplicativo Android"}
+                {downloadState === "starting"
+                  ? "Iniciando download..."
+                  : downloadState === "requested"
+                    ? "Baixar novamente"
+                    : "Baixar aplicativo Android"}
               </span>
               <span className="mt-0.5 block text-xs leading-relaxed text-muted-foreground">
-                {downloadStarted
-                  ? "Depois de instalar, volte aqui para continuar com a campanha no aplicativo."
-                  : "Baixar o APK e depois voltar a este convite."}
+                {downloadState === "requested"
+                  ? "Após instalar, abra o aplicativo. Seu convite já está incluído."
+                  : "O convite acompanha o APK e será aplicado ao abrir o aplicativo."}
               </span>
             </span>
-          </a>
+          </button>
         </div>
       </section>
     </div>
