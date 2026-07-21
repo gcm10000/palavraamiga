@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpen, CalendarDays, Download, ExternalLink, Smartphone, Sparkles, X } from "lucide-react";
+import { ArrowRight, BookOpen, CalendarDays, Download, Sparkles, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { SiteFooter } from "@/components/SiteFooter";
 import { APK_DOWNLOAD_URL } from "@/lib/android-release";
@@ -26,7 +26,24 @@ export function CampaignLanding({ code }: { code: string }) {
   }
 
   const signupUrl = `${APP_URL}?convite=${encodeURIComponent(campaign.code)}`;
+  const nativeUrl = `app.palavramiga.mobile://campaign?convite=${encodeURIComponent(campaign.code)}`;
   void trackOpen(campaign.code);
+
+  function continueInvite() {
+    if (!/Android/i.test(navigator.userAgent)) {
+      window.location.href = signupUrl;
+      return;
+    }
+
+    const startedAt = Date.now();
+    window.location.href = nativeUrl;
+
+    window.setTimeout(() => {
+      if (document.visibilityState === "visible" && Date.now() - startedAt >= 1200) {
+        setShowChoice(true);
+      }
+    }, 1400);
+  }
 
   return (
     <div className="flex min-h-screen flex-col overflow-hidden">
@@ -56,7 +73,7 @@ export function CampaignLanding({ code }: { code: string }) {
             </p>
             <button
               type="button"
-              onClick={() => setShowChoice(true)}
+              onClick={continueInvite}
               className="mt-8 inline-flex cursor-pointer items-center gap-2 rounded-full bg-primary-strong px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/15 transition hover:-translate-y-0.5 hover:bg-primary"
             >
               Começar meu convite
@@ -91,7 +108,6 @@ export function CampaignLanding({ code }: { code: string }) {
       {showChoice && (
         <CampaignDestinationChoice
           appUrl={signupUrl}
-          code={campaign.code}
           onClose={() => setShowChoice(false)}
         />
       )}
@@ -117,25 +133,11 @@ function Feature({
 
 function CampaignDestinationChoice({
   appUrl,
-  code,
   onClose,
 }: {
   appUrl: string;
-  code: string;
   onClose: () => void;
 }) {
-  const nativeUrl = `app.palavramiga.mobile://campaign?convite=${encodeURIComponent(code)}`;
-
-  function openInstalledApp() {
-    const startedAt = Date.now();
-    window.location.href = nativeUrl;
-    window.setTimeout(() => {
-      if (document.visibilityState === "visible" && Date.now() - startedAt >= 1200) {
-        window.location.href = appUrl;
-      }
-    }, 1400);
-  }
-
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") onClose();
@@ -163,6 +165,9 @@ function CampaignDestinationChoice({
             <h2 id="campaign-destination-title" className="mt-2 font-serif text-2xl text-foreground">
               Como deseja continuar?
             </h2>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              Você pode seguir pelo navegador ou instalar o aplicativo Android.
+            </p>
           </div>
           <button
             type="button"
@@ -175,23 +180,6 @@ function CampaignDestinationChoice({
         </div>
 
         <div className="mt-6 space-y-3">
-          <button
-            type="button"
-            onClick={openInstalledApp}
-            className="flex w-full items-center gap-4 rounded-2xl border border-primary/30 bg-primary/5 p-4 text-left transition hover:bg-primary/10"
-          >
-            <span className="flex size-11 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-              <Smartphone className="size-5" />
-            </span>
-            <span className="flex-1">
-              <span className="block text-sm font-semibold text-foreground">Abrir no aplicativo</span>
-              <span className="mt-0.5 block text-xs leading-relaxed text-muted-foreground">
-                Se ele estiver instalado, seu convite continuará direto nele.
-              </span>
-            </span>
-            <ExternalLink className="size-4 text-primary" />
-          </button>
-
           <a href={appUrl} className="flex w-full items-center gap-4 rounded-2xl border border-border p-4 text-left transition hover:bg-accent/60">
             <span className="flex size-11 items-center justify-center rounded-xl bg-accent text-primary-strong">
               <ArrowRight className="size-5" />
